@@ -14,7 +14,8 @@ export const TextContainer = styled.div`
     align-items: center;
     gap: 1.4rem;
   
-    padding: 1.6rem 1.4rem;
+    padding: 0 1.4rem;
+    height: 5rem;
     border-radius: 8px;
     background-color: ${({theme}) => theme.COLORS.DARK_900};
 
@@ -57,7 +58,8 @@ export const NumberContainer = styled.div`
 
     width: 100%;
 
-    padding: 1.6rem 1.4rem;
+    padding: 0 1.4rem;
+    height: 5rem;
     border-radius: 8px;
     background-color: #0D161B;;
     border: none; 
@@ -74,9 +76,11 @@ export const NumberContainer = styled.div`
       border: none;
       color: ${({theme}) => theme.COLORS.LIGHT_400};
       outline: none;
+      line-height: 0;
 
       &:placeholder{
         color: ${({theme}) => theme.COLORS.LIGHT_400};
+        line-height: 0;
       }
     }
   }

@@ -9,5 +9,4 @@ export const Container = styled.a`
 
   text-decoration: none;
   color: white;
-  font-size: 1.4rem;
 `

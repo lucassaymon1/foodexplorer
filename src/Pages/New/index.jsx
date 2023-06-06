@@ -32,45 +32,59 @@ export function New() {
         <Form>
           <h1>Novo prato</h1>
 
-          <div className="input-image-wrapper">
-            <label htmlFor="image">Imagem do prato</label>
-            <label className="input-image change-bgcolor" htmlFor="image">
-              <Upload />
-              <input type="file" id="image" accept="image/*" onChange={e => setFileName(String(e.target.files[0].name))} />
-              <span className="input-image-text">{fileName ? fileName : "Adicionar imagem"}</span>
-            </label>
+          <div className="form-area1">
+            <div className="input-image-wrapper">
+              <label htmlFor="image">Imagem do prato</label>
+              <label className="input-image change-bgcolor" htmlFor="image">
+                <Upload />
+                <input type="file" id="image" accept="image/*" onChange={e => setFileName(String(e.target.files[0].name))} />
+                <span className="input-image-text">{fileName ? fileName : "Adicionar imagem"}</span>
+              </label>
 
-          </div>
-          <Input className="change-bgcolor" placeholder="Ex.: Salada Ceasar" type="text" title="Nome" />
-
-          <label className="select-label" htmlFor="select">Categoria</label>
-          <div className="select-container">
-            <select className="select-box" name="select" id="select">
-              <option value="Refeições">Refeições</option>
-              <option value="Refeições">Pratos principais</option>
-              <option value="Refeições">Sobremesas</option>
-            </select>
-            <div className="icon-container">
-              <CaretLeft />
             </div>
-          </div>
+            <Input className="change-bgcolor" placeholder="Ex.: Salada Ceasar" type="text" title="Nome" />
 
-          <div className="input-wrapper">
-            <label htmlFor="">Ingredientes</label>
-            <div className="change-bgcolor input-container">
-              <TagItem readOnly title="Pão Naan" />
-              <TagItem isNew placeholder="Adicionar" />
+            <div className="select-wrapper">
+              <label className="select-label" htmlFor="select">Categoria</label>
+              <div className="select-container">
+                <select className="select-box" name="select" id="select">
+                  <option value="Refeições">Refeições</option>
+                  <option value="Refeições">Pratos principais</option>
+                  <option value="Refeições">Sobremesas</option>
+                </select>
+                <div className="icon-container">
+                  <CaretLeft />
+                </div>
+              </div>
+
             </div>
 
           </div>
-          <Input className="number-input" inputType="number" placeholder="00,00" type="number" title="Preço" />
+
+          <div className="form-area2">
+            <div className="input-wrapper">
+              <label htmlFor="">Ingredientes</label>
+              <div className="change-bgcolor input-container">
+                <TagItem readOnly title="Pão Naan" />
+                <TagItem isNew placeholder="Adicionar" />
+              </div>
+
+            </div>
+            <Input className="number-input" inputType="number" placeholder="00,00" type="number" title="Preço" />
+
+          </div>
+
 
           <div className="textarea-wrapper">
             <label htmlFor="textarea">Descrição</label>
             <TextArea id="textarea" placeholder="Fale brevemente sobre o prato, seus ingredientes e composição" />
 
           </div>
-          <Button title="Salvar alterações" onClick={() => navigate("/")} />
+          <div className="button-container">
+            <div className="none"></div>
+            <Button title="Salvar alterações" onClick={() => navigate("/")} />
+
+          </div>
 
         </Form>
 

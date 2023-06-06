@@ -8,7 +8,8 @@ export const Container = styled.div`
     flex-wrap: wrap;
 
     width: 100%;
-    padding: .8rem;
+    height: 5rem;
+    padding-inline: .8rem;
     background-color: ${({theme}) => theme.COLORS.DARK_900};
     border-radius: .8rem;
     margin-top: 1.6rem;
@@ -26,6 +27,24 @@ export const Container = styled.div`
       }
     }
   }
+  
+  @media screen and (min-width: 1024px){
+    main{
+      margin-inline: calc(2.3rem + 6.8625vw);
+      margin-block: 4rem;
+      .button-text{
+        a{
+          font-size: 2.4rem;
+          font-weight: 700;
+          color: ${({theme}) => theme.COLORS.LIGHT_300};
+        }
+        svg{
+          width: 1.8rem;
+        }
+      }
+
+    }
+  }
 
 `
 
@@ -39,6 +58,12 @@ export const Form = styled.form`
   margin: 2.4rem auto 5.3rem;
   width: 100%;
   max-width: 50rem;
+
+  .form-area1, .form-area2{
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
 
   .change-bgcolor, textarea{
     background-color: #0D161B;
@@ -58,13 +83,21 @@ export const Form = styled.form`
     display: block;
   }
 
+  .select-wrapper{
+    label{
+      margin-bottom: 1.6rem;
+    display: block;
+    }
+  }
+
   .input-image{
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
+    height: 5rem;
 
     margin: 1.6rem auto 0;
-    padding: 1.2rem 3.2rem;
+    padding: 0 3.2rem;
     border-radius: 8px;
     border: none; 
     outline: none;
@@ -87,12 +120,12 @@ export const Form = styled.form`
     display: flex;
     justify-content: center;
     flex-direction: column;
-
+    
     border-radius: 8px;
     position: relative;
     border: none; 
     outline: none;
-
+    
     color: ${({theme}) => theme.COLORS.LIGHT_400};
     cursor: pointer;
 
@@ -104,7 +137,8 @@ export const Form = styled.form`
       background-color: ${({theme}) => theme.COLORS.DARK_900};
       border-radius: .5rem;
       
-      padding: 1.6rem 1.4rem;
+      padding: 0 1.4rem;
+      height: 5rem;
       color: ${({theme}) => theme.COLORS.LIGHT_400};
       width: 100%;
   
@@ -141,11 +175,49 @@ export const Form = styled.form`
     grid-gap: 3.2rem;
     grid-template-columns: 1fr 1.3fr;
 
-    
-
     button:nth-child(1){
       background: #0D161B;
     }
+  }
+
+  @media screen and (min-width: 1024px){
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+    max-width: 100%;
+    margin: 0;
+    h1{
+      margin: 2.4rem 0 .8rem;
+    }
+
+    .form-area1{
+      display: grid;
+      grid-template-columns: 1fr 2fr 1.5fr;
+      gap: 3.2rem;
+      .select-container .select-box{
+        
+        background-color: #0D161B;
+      }
+    }
+    .form-area2{
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      gap: 3.2rem;
+    }
+
+    .button-container{
+      width: 30%;
+      justify-self: flex-end;
+      align-self: flex-end;
+      flex-direction: row;
+      text-align: right;
+    }
+
+    button{
+      margin: 0;
+      
+    }
+
   }
 
   

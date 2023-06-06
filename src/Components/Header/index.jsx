@@ -1,11 +1,15 @@
 import React from "react"
+import { useState } from "react"
+import { useNavigate, useLocation } from "react-router-dom"
 
 import { Container } from "./styles"
 import { Receipt } from "../../icons/Receipt.jsx"
 import { Search } from "../../icons/Search"
+import { SignOut } from "../../icons/SignOut"
+
 import { Input } from "../../Components/Input"
-import { useState } from "react"
-import { useNavigate, useLocation } from "react-router-dom"
+import { Button } from "../Button"
+import { ButtonText } from "../ButtonText"
 
 export function Header() {
   const [menuState, setMenuState] = useState(false)
@@ -39,16 +43,35 @@ export function Header() {
         <div className="logo-container">
           <h1 className={menuState ? "menu-heading" : undefined}>Menu</h1>
           <div className={menuState ? "logo logo-inactive" : "logo"}>
-            <img src="src/icons/ExplorerIcon.svg" alt="Logomarca da Food Explorer" />
-            <h1>food explorer</h1>
+            <button onClick={() => navigate("/")} className="home-button">
+              <div className="heading-container">
+                <img src="src/icons/ExplorerIcon.svg" alt="Logomarca da Food Explorer" />
+                <h1>food explorer</h1>
+
+              </div>
+            </button>
             {
               isAdm &&
               <p>admin</p>
             }
 
+
           </div>
 
         </div>
+
+        <Input className="desktop-input" placeholder="Busque por pratos ou ingredientes" type="text" icon={Search} />
+
+        {
+          isAdm ?
+            <Button onClick={() => navigate("/new")} className="desktop-button" title="Novo prato" />
+            :
+            <Button className="desktop-button" title="Meus Pedidos (0)" icon={Receipt} />
+
+        }
+
+
+        <ButtonText className="desktop-button" icon={SignOut} />
 
         {
           isAdm ?

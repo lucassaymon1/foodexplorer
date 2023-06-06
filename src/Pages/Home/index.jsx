@@ -13,7 +13,8 @@ export function Home() {
         <div className="banner">
 
           <div className="img-container">
-            <img src="src/assets/pngegg 2.png" alt="Macarones com frutinhas e folhas" />
+            <img className="mobile-img" src="src/assets/pngegg 2.png" alt="Macarones com frutinhas e folhas" />
+            <img className="desktop-img" src="src/assets/pngegg 1.png" alt="Macarones com frutinhas e folhas" />
 
           </div>
           <div className="lettering-container">

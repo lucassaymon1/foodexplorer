@@ -13,7 +13,7 @@ export const Container = styled.header`
 
     z-index: 2000;
     position: relative;
-
+    
     .logo-container{
       width: 100%;
       text-align: center;
@@ -34,6 +34,14 @@ export const Container = styled.header`
       }
     }
     .logo{
+      .home-button{
+        border: none;
+        background: none;
+
+        h1{
+          color: white;
+        }
+      }
       display: flex;
       gap: .8rem;
       align-items: center;
@@ -128,6 +136,17 @@ export const Container = styled.header`
         display: block;
       }
     }
+
+    .heading-container{
+      display: flex;
+      gap: .8rem;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    >.desktop-input, .desktop-button, .input-wrapper{
+      display: none;
+    }
     
   }
 
@@ -173,5 +192,74 @@ export const Container = styled.header`
         }
       }
     }
+  }
+
+  @media screen and (min-width: 1024px){
+    
+    
+    .header{
+      display: grid;
+      grid-template-columns: 0fr 2fr 0.5fr 0fr;
+      gap: 3.2rem;
+      padding-inline: 12.3rem;
+      width: 100%;
+      .menu{
+        display: none;
+      }
+      .hamburger{
+        display: none;
+      }
+
+      >.desktop-button, .input-wrapper{
+        display: block;
+      }
+      >.desktop-button{
+        max-width: 21.6rem;
+      }
+
+      >.desktop-input, .input-wrapper{
+        display: flex;
+        min-width: 100%;
+      }
+
+
+      .logo-container{
+        display: flex;
+        align-items: flex-start;
+        text-align: left;
+        width: max-content;
+        h1{
+          display: none;
+        }
+      }
+      .logo{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-self: flex-start;
+        justify-content: flex-start;
+        gap: 0;
+        text-align: right;
+        p{
+          margin-top: -.5rem;
+          display: flex;
+        }
+        .heading-container{
+          img{
+            display: flex;
+          }
+          h1{
+            display: flex;
+          }
+          display: flex;
+          align-items: center;
+        }
+
+  
+      }
+      
+
+    }
+
   }
 `

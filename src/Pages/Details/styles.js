@@ -10,6 +10,7 @@ main{
 
     img{
       margin:1.6rem auto;
+      width: 26.3rem;
     }
 
     h1{
@@ -65,5 +66,51 @@ main{
       }
     }
   
+  }
+
+  @media screen and (min-width: 1024px){
+    main{
+
+      margin-inline: calc(2.3rem + 6.8625vw);
+      .details-container{
+        margin-top: 4.2rem;
+        display: grid;
+        gap: 4.7rem;
+        grid-template-columns: 1fr 2fr;
+        img{
+          margin: 0;
+          width: 39rem;
+        }
+        .data-container {
+          display: flex;
+          flex-direction: column;
+          text-align: left;
+          justify-content: center;
+          .tags-container{
+            margin-inline: 0;
+            text-align: left;
+            justify-content: flex-start;
+            max-width: 100%;
+          }
+          .order-container{
+            margin: 0;
+            justify-content: flex-start;
+            
+          }
+          h1{
+            font-size: 4rem;
+            line-height: 140%;
+            font-weight: 500;
+          }
+          p{
+            max-width: 100%;
+            font-size: 2.4rem;
+            line-height: 3.3rem;
+            font-weight: 400;
+          }
+
+        }
+      }
+    }
   }
 `
