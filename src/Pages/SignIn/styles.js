@@ -8,22 +8,75 @@ export const Form = styled.form`
   align-items: left;
   gap: 3.2rem;
   
-  margin: 15.8rem auto;
+  margin: 7.3rem auto 15.8rem;
   max-width: 31.6rem;
-
-  h1{
-    font-size: 3.7rem;
-    margin-bottom: calc(7.3rem - 3.2rem); // gameplay de preguiçoso KKKKKKKKKKKKKK
+  h2{
+    margin: auto;
   }
-  .logo{
-    display: flex;
-    justify-content: left;
-    gap: 1rem;
+  input{
+    width: 100%;
   }
-`
+  label{
+    margin-bottom: .8rem;
+  }
+  
+  a{
+    margin: auto;
+  }
+  
+  @media screen and (min-width: 1024px){
+    width: 47.6rem;
+    max-width: none;
+    padding: 6.4rem;
+    background-color: ${({theme}) => theme.COLORS.DARK_700};
+    border-radius: 1.6rem;
+    margin: 0;
+    
+    h2{
+      font-size: 3.2rem;
+    }
+  }
+  `
 
 export const Container = styled.div`
-  margin: auto;
-  text-align: center;
 
+main{
+  max-width: 31.6rem;
+  margin: 15.8rem auto 0;
+  text-align: left;
+  .logo{
+    h1{
+      font-size: 3.7rem;
+    }
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+    width: max-content;
+   }
+  }
+
+
+  @media screen and (min-width: 1024px){
+  
+    main{
+      max-width: none;
+      display: flex;
+      align-items: center;
+      align-self: center;
+      justify-self: center;
+      justify-content: center;
+      gap: 30.6rem;
+      margin-top: 0;
+      margin-inline: calc(2.3rem + 6.8625vw);
+      .logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        width: max-content;
+      }
+    }
+  }
+  
 `

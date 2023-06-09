@@ -16,7 +16,8 @@ export const Container = styled.div`
   }
 
   main{
-    margin: 1.1rem 3.5rem;
+    margin: 1.1rem 3.5rem 0;
+    padding-bottom: 7.4rem;
 
     .button-text{
       a{

@@ -1,22 +1,30 @@
 import styled from "styled-components"
 
 export const Container = styled.header`
+ display: grid;
   .header{
+    display: grid;
+    flex-direction: row;
+    white-space: nowrap;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-row: 1;
+    justify-content: space-between;
+    align-items: center;
+    grid-auto-flow: column;
     width: 100%;
     background-color: ${({theme}) => theme.COLORS.DARK_600};
     padding: ${({isAdm}) => isAdm ? "5.5rem 0 2.8rem 2.4rem" : "5.5rem 2.4rem 2.8rem 2.4rem"};
   
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    
 
     z-index: 2000;
     position: relative;
     
     .logo-container{
       width: 100%;
+      display: flex;
       text-align: center;
+      justify-content: center;
       position: relative;
       >h1{
         opacity: 0;
@@ -46,6 +54,7 @@ export const Container = styled.header`
       gap: .8rem;
       align-items: center;
       justify-content: center;
+      
       
       h1{
         font-size: 2.1rem;
@@ -116,6 +125,7 @@ export const Container = styled.header`
     }
     >.popup-icon{
       position: relative;
+
       .popup{
         display: flex;
         align-items: center;
@@ -144,14 +154,14 @@ export const Container = styled.header`
       justify-content: center;
     }
     
-    >.desktop-input, .desktop-button, .input-wrapper{
+    >.desktop-input, .desktop-button, .input-wrapper, .signOut{
       display: none;
     }
     
   }
 
   .menu-inactive{
-    top: -100rem;
+    top: calc(-100% - 5rem);
   }
   .menu-active{
     top: 11rem;
@@ -195,14 +205,33 @@ export const Container = styled.header`
   }
 
   @media screen and (min-width: 1024px){
+
+    .menu-inactive{
+      display: none;
+    }
+
+    .popup-icon{
+      display: none;
+    }
+
     
     
     .header{
+      .signOut{
+        display: inline-block;
+      }
       display: grid;
       grid-template-columns: 0fr 2fr 0.5fr 0fr;
       gap: 3.2rem;
       padding-inline: 12.3rem;
       width: 100%;
+      >.desktop-button{
+        display: flex;
+        align-items: center;
+        gap: .8rem;
+        width: max-content;
+        padding-inline: 2.6rem;
+      }
       .menu{
         display: none;
       }
@@ -210,8 +239,12 @@ export const Container = styled.header`
         display: none;
       }
 
-      >.desktop-button, .input-wrapper{
+      >.input-wrapper{
         display: block;
+        input{
+          height:4.8rem;
+          border-radius: .5rem;
+        }
       }
       >.desktop-button{
         max-width: 21.6rem;

@@ -2,7 +2,10 @@ import { styled } from "styled-components";
 
 export const Container = styled.div`
 
-main{
+  main{
+    text-align: center;
+    margin: 3.2rem 6rem 0;
+    padding-bottom: 5rem;
     a{
       font-size: 2.4rem;
       text-align: left;
@@ -25,8 +28,6 @@ main{
       max-width: 28.6rem;
     }
 
-    text-align: center;
-    margin: 3.2rem 6rem 5rem;
 
     .tags-container{
       margin: 0 auto 4.8rem;
@@ -65,13 +66,14 @@ main{
         font-size: 2.2rem;
       }
     }
-  
+    
   }
 
   @media screen and (min-width: 1024px){
     main{
 
       margin-inline: calc(2.3rem + 6.8625vw);
+      padding-bottom: 7.4rem;
       .details-container{
         margin-top: 4.2rem;
         display: grid;
@@ -107,6 +109,7 @@ main{
             font-size: 2.4rem;
             line-height: 3.3rem;
             font-weight: 400;
+            margin-inline: 0;
           }
 
         }

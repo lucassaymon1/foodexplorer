@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom"
 
 export function Details() {
   const navigate = useNavigate()
-  let isAdm = true;
+  let isAdm = false;
   return (
     <Container>
       <Header />

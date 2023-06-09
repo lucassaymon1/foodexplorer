@@ -24,19 +24,22 @@ export function Home() {
           </div>
         </div>
 
-        <Section title="Refeições">
+        <Section title="Refeições" id="Refeições">
+          <FoodCard description="Massa fresca com camarões e pesto." isAdm={isAdm} title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
+          <FoodCard description="Massa fresca com camarões e pesto." isAdm={isAdm} title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
+          <FoodCard description="Massa fresca com camarões e pesto." isAdm={isAdm} title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
           <FoodCard description="Massa fresca com camarões e pesto." isAdm={isAdm} title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
           <FoodCard description="Massa fresca com camarões e pesto." isAdm={isAdm} title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
           <FoodCard description="Massa fresca com camarões e pesto." isAdm={isAdm} title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
         </Section>
 
-        <Section title="Sobremesas">
+        <Section title="Sobremesas" id="Sobremesas">
           <FoodCard description="Massa fresca com camarões e pesto." title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
           <FoodCard description="Massa fresca com camarões e pesto." title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
           <FoodCard description="Massa fresca com camarões e pesto." title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
         </Section>
 
-        <Section title="Pratos Principais">
+        <Section title="Pratos Principais" id="Pratos Principais">
           <FoodCard description="Massa fresca com camarões e pesto." title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
           <FoodCard description="Massa fresca com camarões e pesto." title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
           <FoodCard description="Massa fresca com camarões e pesto." title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />

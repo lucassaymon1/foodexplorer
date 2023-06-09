@@ -6,6 +6,7 @@ export const TextContainer = styled.div`
   justify-content: center;
   text-align: left;
 
+  width: 100%;
 
   
   .input-wrapper{

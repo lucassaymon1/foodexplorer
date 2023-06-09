@@ -71,7 +71,7 @@ export function Header() {
         }
 
 
-        <ButtonText className="desktop-button" icon={SignOut} />
+        <ButtonText className="signOut" icon={SignOut} />
 
         {
           isAdm ?

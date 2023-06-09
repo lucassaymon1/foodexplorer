@@ -4,6 +4,7 @@ export const Container = styled.div`
 
   main{
     margin-inline: calc(.8rem + 1.8625vw);
+    padding-bottom: 4rem;
   }
   .banner{
     display: flex;
@@ -19,6 +20,14 @@ export const Container = styled.div`
     background: linear-gradient(180deg, #091E26 0%, #00131C 100%);
     height: 12rem;
     border-radius: 3px;
+
+    h2{
+      font-size: 1.8rem;
+    }
+    p{
+      font-size: 1.2rem;
+    }
+
     .mobile-img{
       position: absolute;
       left: -3rem;
@@ -42,7 +51,7 @@ export const Container = styled.div`
     main{
 
       margin-inline: calc(2.3rem + 6.8625vw);
-      
+      padding-bottom: 7.4rem;
       
       .banner{
   
