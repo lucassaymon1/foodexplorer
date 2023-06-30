@@ -7,6 +7,10 @@ import { useNavigate } from "react-router-dom"
 
 import { useRef, useState, useEffect } from "react"
 
+//context
+
+import { useAuth, authProvider } from "../../hooks/auth"
+
 export function SignIn() {
 
   function getWindowSize() {
@@ -49,7 +53,16 @@ export function SignIn() {
 
   });
 
+  async function handleSignIn() {
+    signIn(email, password)
+  }
+
+  const { signIn } = useAuth()
+
   const navigate = useNavigate()
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
   return (
 
     <Container>
@@ -68,15 +81,17 @@ export function SignIn() {
             placeholder="Exemplo: exemplo@exemplo.com.br"
             type="email"
             title="Email"
+            onChange={e => setEmail(e.target.value)}
           />
 
           <Input
             placeholder="No mínimo 6 caracteres"
             type="password"
             title="Senha"
+            onChange={e => setPassword(e.target.value)}
           />
 
-          <Button title="Entrar" />
+          <Button title="Entrar" onClick={handleSignIn} />
           <ButtonText onClick={() => navigate("/signup")} title="Criar uma conta" />
 
 
