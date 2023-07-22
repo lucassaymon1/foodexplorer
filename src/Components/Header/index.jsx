@@ -11,12 +11,13 @@ import { Input } from "../../Components/Input"
 import { Button } from "../Button"
 import { ButtonText } from "../ButtonText"
 
+import ExplorerIcon from "../../icons/ExplorerIcon.svg"
+
 export function Header() {
   const [menuState, setMenuState] = useState(false)
   const isAdm = true
   const location = useLocation()
   const navigate = useNavigate()
-  console.log(location.pathname)
 
   function handleToggleMenu() {
     setMenuState(!menuState)
@@ -45,7 +46,7 @@ export function Header() {
           <div className={menuState ? "logo logo-inactive" : "logo"}>
             <button onClick={() => navigate("/")} className="home-button">
               <div className="heading-container">
-                <img src="src/icons/ExplorerIcon.svg" alt="Logomarca da Food Explorer" />
+                <img src={ExplorerIcon} alt="Logomarca da Food Explorer" />
                 <h1>food explorer</h1>
 
               </div>

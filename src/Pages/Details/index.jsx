@@ -9,10 +9,30 @@ import { Quantify } from "../../Components/Quantify"
 import { Receipt } from "../../icons/Receipt"
 import { CaretLeft } from "../../icons/CaretLeft"
 
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { api } from "../../services"
+
+import FoodTemplate1 from "../../assets/FoodTemplate1.png"
 
 export function Details() {
+
+  const [data, setData] = useState(null)
+
+  const params = useParams()
   const navigate = useNavigate()
+
+  useEffect(() => {
+
+    async function fetchFood(){
+      const response = await api.get(`/foods/${params.id}`)
+      setData(response.data)
+    }
+    
+    fetchFood()
+
+  }, [])
+
   let isAdm = false;
   return (
     <Container>
@@ -20,37 +40,40 @@ export function Details() {
 
       <main>
         <ButtonText onClick={() => navigate(-1)} icon={CaretLeft} title="voltar" />
+          {data && 
+            
+            <div className="details-container">
+              <img src={FoodTemplate1} alt="Image of the selected food" />
+              <div className="data-container">
+                <h1>{data.name}</h1>
+                <p>{data.description}</p>
+            
+                <div className="tags-container">
+                  {
+                    data.tags.map(tag => (
+                      <Tag title={tag.name} key={String(tag.id)} />
+                    ))
+                  }
+                </div>
+                {
+                  isAdm ?
+                    <div className="order-container">
+                      <Button onClick={() => navigate("/edit")} title={`Editar prato`} />
+                    </div>
+                    :
+                    <div className="order-container">
+                      <Quantify className="quantify" />
+                      <Button onClick={() => navigate("/")} icon={Receipt} title={`pedir · R$ ${data.price}`} />
+                    </div>
 
-        <div className="details-container">
-          <img src="src/assets/FoodTemplate1.png" alt="" />
-          <div className="data-container">
-            <h1>Salada Ravanello</h1>
-            <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim.</p>
-            <div className="tags-container">
-              <Tag title="alface" />
-              <Tag title="cebola" />
-              <Tag title="pão naan" />
-              <Tag title="pepino" />
-              <Tag title="rabanete" />
-              <Tag title="tomate" />
+
+                }
+
+              </div>
+
             </div>
-            {
-              isAdm ?
-                <div className="order-container">
-                  <Button onClick={() => navigate("/edit")} title={`Editar prato`} />
-                </div>
-                :
-                <div className="order-container">
-                  <Quantify className="quantify" />
-                  <Button onClick={() => navigate("/")} icon={Receipt} title={`pedir · R$ 25,00`} />
-                </div>
+          }
 
-
-            }
-
-          </div>
-
-        </div>
 
       </main>
       <Footer />

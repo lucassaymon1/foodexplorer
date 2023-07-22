@@ -4,14 +4,18 @@ import { Button } from "../../Components/Button"
 import { ButtonText } from "../../Components/ButtonText"
 
 import { useNavigate } from "react-router-dom"
-
 import { useRef, useState, useEffect } from "react"
 
 //context
 
-import { useAuth, authProvider } from "../../hooks/auth"
+import { useAuth, AuthProvider } from "../../hooks/auth"
 
 export function SignIn() {
+  const { signIn } = useAuth()
+
+  const navigate = useNavigate()
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
   function getWindowSize() {
     const { innerWidth, innerHeight } = window;
@@ -54,14 +58,9 @@ export function SignIn() {
   });
 
   async function handleSignIn() {
-    signIn(email, password)
+    signIn({ email, password })
   }
 
-  const { signIn } = useAuth()
-
-  const navigate = useNavigate()
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
 
   return (
 

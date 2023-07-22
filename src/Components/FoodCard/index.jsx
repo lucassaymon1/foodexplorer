@@ -10,7 +10,7 @@ import { Quantify } from "../Quantify"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-export function FoodCard({ isAdm, description, title, price, photo }) {
+export function FoodCard({ isAdm, description, title, price, photo, foodId }) {
 
   const navigate = useNavigate()
 
@@ -19,7 +19,7 @@ export function FoodCard({ isAdm, description, title, price, photo }) {
     <Container>
       {
         isAdm ?
-          <button className="icon" onClick={() => navigate("/edit")}>
+          <button className="icon" onClick={() => navigate(`/edit/${foodId}`)}>
             <Pencil />
 
           </button>
@@ -30,7 +30,7 @@ export function FoodCard({ isAdm, description, title, price, photo }) {
           </button>
 
       }
-      <button className="details-button" onClick={() => navigate("/details")}>
+      <button className="details-button" onClick={() => navigate(`/details/${foodId}`)}>
         <img src={photo} alt="refeição" />
         <h3>{title}</h3>
         <p className="description">{description}</p>

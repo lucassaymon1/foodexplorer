@@ -13,7 +13,6 @@ export function Section({ children, title, id }) {
   function handleScrollRight(sectionId) {
     const sliderRight = document.querySelector(`#${sectionId}`)
     sliderRight.scrollLeft += (304 + 16);
-    console.log("opa")
   }
 
   return (
