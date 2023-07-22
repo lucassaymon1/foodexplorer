@@ -6,13 +6,11 @@ import { Edit } from "../Pages/Edit";
 
 export function AppRoutes() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/details" element={<Details />} />
-        <Route path="/new" element={<New />} />
-        <Route path="/edit" element={<Edit />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/details/:id" element={<Details />} />
+      <Route path="/new" element={<New />} />
+      <Route path="/edit/:id" element={<Edit />} />
+    </Routes>
   )
 }
