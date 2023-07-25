@@ -19,6 +19,9 @@ export function New() {
 
   const navigate = useNavigate()
 
+  const [tags, setTags] = useState([])
+  const [newTag, setNewTag] = useState("")
+
   const [filePicture, setFilePicture] = useState(null)
   const [fileName, setFileName] = useState(null)
 
@@ -26,6 +29,18 @@ export function New() {
   const [foodDescription, setFoodDescription] = useState("")
   const [foodPrice, setFoodPrice] = useState("")
   const [foodCategory, setFoodCategory] = useState("")
+  
+  function handleRemoveTag(deleted){
+    setTags(prevState => prevState.filter(tag => tag !== deleted))
+  }
+
+  function handleAddTag(){
+    if(!newTag){
+      return alert("adicione um título para a tag!")
+    }
+    setTags(prevState => [...prevState, newTag])
+    setNewTag("")
+  }
 
   async function handleSetPicture(event){
     const file = event.target.files[0]
@@ -127,9 +142,16 @@ export function New() {
           <div className="form-area2">
             <div className="input-wrapper">
               <label htmlFor="">Ingredientes</label>
-              <div className="change-bgcolor input-container">
-                <TagItem readOnly title="Pão Naan" />
-                <TagItem isNew placeholder="Adicionar" />
+              <div className=" tags-container change-bgcolor input-container">
+                {
+                  tags &&
+                  tags.map((tag, index) => (
+                    <TagItem readOnly key={String(index)} title={tag} onClick={() => handleRemoveTag(tag)}/>
+                  ))
+                }
+                
+                
+                <TagItem title={newTag} isNew placeholder="Adicionar" onClick={handleAddTag} onChange={e => setNewTag(e.target.value)}/>
               </div>
 
             </div>

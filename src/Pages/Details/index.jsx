@@ -26,7 +26,11 @@ export function Details() {
 
     async function fetchFood(){
       const response = await api.get(`/foods/${params.id}`)
-      setData(response.data)
+      const foodWithPicture = () => ({
+        ...response.data,
+        picture: response.data.picture ? `${api.defaults.baseURL}/files/${response.data.picture}` : FoodTemplate1
+      })
+      setData(foodWithPicture)
     }
     
     fetchFood()
@@ -43,7 +47,7 @@ export function Details() {
           {data && 
             
             <div className="details-container">
-              <img src={FoodTemplate1} alt="Image of the selected food" />
+              <img src={data.picture} alt="Image of the selected food" />
               <div className="data-container">
                 <h1>{data.name}</h1>
                 <p>{data.description}</p>

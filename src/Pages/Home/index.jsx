@@ -13,7 +13,7 @@ export function Home() {
 
   const { user } = useAuth()
 
-  const [isAdm, setIsAdm] = useState(false)
+  const [isAdm, setIsAdm] = useState(true)
   const [search, setSearch] = useState("")
   
   const [tags, setTags] = useState([])
