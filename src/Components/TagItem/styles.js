@@ -1,38 +1,42 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components'
 
 export const Container = styled.div`
+	display: flex;
+	align-items: center;
 
-  display: flex;
-  align-items: center;
+	height: 3.2rem;
+	width: min-content;
 
-  height: 3.2rem;
-  background: ${({isNew, theme}) => isNew ? "transparent" : theme.COLORS.LIGHT_600};
-  padding: .8rem 1.6rem;
+	background: ${({ isNew, theme }) =>
+		isNew ? 'transparent' : theme.COLORS.LIGHT_600};
+	padding: 0.8rem 1.6rem;
 
-  border-radius: 8px;
-  border: ${({theme, isNew}) => isNew ? `1px dashed ${theme.COLORS.LIGHT_400}` : `none`};
-  
-  input{
-    width: 8rem;
-    background: none;
+	border-radius: 8px;
+	border: ${({ theme, isNew }) =>
+		isNew ? `1px dashed ${theme.COLORS.LIGHT_400}` : `none`};
 
-    border: none;
-    outline: none;
-    color: white;
-    display: block;
-    cursor: ${({isNew}) => isNew ? "arrow" : "auto"};
-  }
+	input {
+		min-width: 8rem;
+		width: 100%;
+		background: none;
 
-  svg{
-    width: .8rem;
-  }
+		border: none;
+		outline: none;
+		color: white;
+		display: block;
+		cursor: ${({ isNew }) => (isNew ? 'arrow' : 'auto')};
+	}
 
-  button{
-    border: none;
-    background: none;
-    margin: 0;
-    padding: 0;
-  }
+	svg {
+		width: 0.8rem;
+	}
 
-
+	button {
+		display: flex;
+		align-items: center;
+		border: none;
+		background: none;
+		margin: 0;
+		padding: 0;
+	}
 `
