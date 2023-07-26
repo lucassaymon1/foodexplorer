@@ -5,11 +5,11 @@ export const Container = styled.div`
 	align-items: center;
 
 	height: 3.2rem;
-	width: min-content;
+	width: ${({ isNew }) => (isNew ? 'min-content' : 'max-content')};
 
 	background: ${({ isNew, theme }) =>
 		isNew ? 'transparent' : theme.COLORS.LIGHT_600};
-	padding: 0.8rem 1.6rem;
+	padding: 0.8rem 0.8rem 0.8rem 1.2rem;
 
 	border-radius: 8px;
 	border: ${({ theme, isNew }) =>
@@ -29,6 +29,7 @@ export const Container = styled.div`
 
 	svg {
 		width: 0.8rem;
+		margin: 0 4px 0;
 	}
 
 	button {
@@ -38,5 +39,8 @@ export const Container = styled.div`
 		background: none;
 		margin: 0;
 		padding: 0;
+	}
+	p {
+		margin-right: 4px;
 	}
 `
