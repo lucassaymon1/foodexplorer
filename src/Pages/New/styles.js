@@ -103,10 +103,12 @@ export const Form = styled.form`
 		height: 5rem;
 
 		margin: 1.6rem auto 0;
-		padding: 0 3.2rem;
+		padding: 0 1.6rem;
 		border-radius: 8px;
 		border: none;
 		outline: none;
+
+		overflow-x: hidden;
 
 		color: white;
 		cursor: pointer;
@@ -188,6 +190,11 @@ export const Form = styled.form`
 		gap: 3.2rem;
 		max-width: 100%;
 		margin: 0;
+
+		.input-image {
+			padding: 0 3.2rem;
+		}
+
 		h1 {
 			margin: 2.4rem 0 0.8rem;
 		}

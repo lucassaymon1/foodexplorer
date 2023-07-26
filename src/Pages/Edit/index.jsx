@@ -18,6 +18,10 @@ import { api } from "../../services";
 export function Edit() {
   const navigate = useNavigate()
   const params = useParams()
+
+  const [tags, setTags] = useState([])
+  const [newTag, setNewTag] = useState("")
+
   const [fileName, setFileName] = useState(null)
   const [filePicture, setFilePicture] = useState(null)
   const [data, setData] = useState(null)
@@ -26,6 +30,18 @@ export function Edit() {
   const [description, setDescription] = useState("")
   const [price, setPrice] = useState("")
   const [category, setCategory] = useState("")
+
+  function handleRemoveTag(deleted){
+    setTags(prevState => prevState.filter(tag => tag !== deleted))
+  }
+
+  function handleAddTag(){
+    if(!newTag){
+      return alert("adicione um título para a tag!")
+    }
+    setTags(prevState => [...prevState, newTag])
+    setNewTag("")
+  }
 
   function handleChangePicture(event){
     const file = event.target.files[0]
@@ -62,7 +78,8 @@ export function Edit() {
         name: name ? name : data.name,
         price: price ? price : data.price,
         category: category ? category : data.category,
-        description: description ? description : data.description
+        description: description ? description : data.description,
+        tags
       })
 
       console.log(response)
@@ -88,7 +105,6 @@ export function Edit() {
     }
   }
 
-
   useEffect(() => {
 
     async function fetchFood(){
@@ -99,6 +115,11 @@ export function Edit() {
       setPrice(response.data.price)
       setCategory(response.data.category)
       setDescription(response.data.description)
+      const formattedTags = response.data.tags.map(tag => (
+        tag.name
+      ))
+
+      setTags(formattedTags)
     }
     
     fetchFood()
@@ -166,9 +187,27 @@ export function Edit() {
 
               <div className="input-wrapper">
                 <label htmlFor="">Ingredientes</label>
-                <div className="change-bgcolor input-container">
-                  <TagItem readOnly title="Pão Naan" />
-                  <TagItem isNew placeholder="Adicionar" />
+                <div className="tags-container change-bgcolor input-container">
+
+                  {
+                    tags &&
+                    tags.map((tag, index) => (
+                      <TagItem
+                        readOnly 
+                        key={String(index)}
+                        title={tag}
+                        onClick={() => handleRemoveTag(tag)}
+                      />
+
+                    ))
+                  }
+                  <TagItem
+                    isNew 
+                    title={newTag} 
+                    placeholder="Adicionar" 
+                    onClick={handleAddTag} 
+                    onChange={e => setNewTag(e.target.value)}
+                  />
                 </div>
 
               </div>

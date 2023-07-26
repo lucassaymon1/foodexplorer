@@ -50,6 +50,10 @@ export function New() {
 
   async function handleCreateFood(){
 
+    if(newTag){
+      return alert("Você adicionou um título para uma nova tag, mas esqueceu de adicioná-la. Adicione-a antes de criar um novo prato.")
+    }
+
     const formNewData = new FormData();
     
     console.log(filePicture)
@@ -77,6 +81,7 @@ export function New() {
       formNewData.append("price", foodPrice);
       formNewData.append("description", foodDescription);
       formNewData.append("category", foodCategory);
+      formNewData.append("formTags", tags)
 
       await api.post("/foods", formNewData, {
         headers: {
@@ -146,12 +151,21 @@ export function New() {
                 {
                   tags &&
                   tags.map((tag, index) => (
-                    <TagItem readOnly key={String(index)} title={tag} onClick={() => handleRemoveTag(tag)}/>
+                    <TagItem 
+                      readOnly 
+                      key={String(index)} 
+                      title={tag} 
+                      onClick={() => handleRemoveTag(tag)}
+                    />
                   ))
                 }
-                
-                
-                <TagItem title={newTag} isNew placeholder="Adicionar" onClick={handleAddTag} onChange={e => setNewTag(e.target.value)}/>
+                <TagItem
+                  title={newTag}
+                  isNew
+                  placeholder="Adicionar"
+                  onClick={handleAddTag}
+                  onChange={e => setNewTag(e.target.value)}
+                />
               </div>
 
             </div>
