@@ -11,9 +11,9 @@ import { useAuth } from "../../hooks/auth"
 
 export function Home() {
 
-  const { user } = useAuth()
+  const { user, signOut } = useAuth()
+  const isAdm = user.isAdmin
 
-  const [isAdm, setIsAdm] = useState(true)
   const [search, setSearch] = useState("")
   
   const [tags, setTags] = useState([])
@@ -35,7 +35,6 @@ export function Home() {
 
   function updateFoodPictures(foods){
     if(foods){
-      console.log(api, "api")
       const foodsWithPictures = foods.map(food => {
         return{
           ...food,
@@ -48,12 +47,25 @@ export function Home() {
   }
 
   useEffect(() => {
+    
+    async function ensureAuthenticated(){
+      try{
+        const response = await api.get("/sessions")
+        fetchFoods()
+      }
+      catch(error){
+        if(error.response.status === 401){
+          signOut()
+        }
+      }
+    
+    }
     async function fetchFoods() {
       const response = await api.get("/foods")
       const foodsWithPictures = updateFoodPictures(response.data)
       setFoods(foodsWithPictures)
     }
-    fetchFoods()
+    ensureAuthenticated()
   }, [])
 
   return (
@@ -84,7 +96,6 @@ export function Home() {
                     <FoodCard
                       key={String(sectionFood.id)}
                       description={sectionFood.description}
-                      isAdm={isAdm}
                       title={sectionFood.name}
                       price={sectionFood.price}
                       photo={sectionFood.picture}
@@ -99,27 +110,7 @@ export function Home() {
           })
         }
 
-        <Section title="Refeições" id="Refeições">
-
-          <FoodCard description="Massa fresca com camarões e pesto." isAdm={isAdm} title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
-          <FoodCard description="Massa fresca com camarões e pesto." isAdm={isAdm} title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
-          <FoodCard description="Massa fresca com camarões e pesto." isAdm={isAdm} title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
-          <FoodCard description="Massa fresca com camarões e pesto." isAdm={isAdm} title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
-          <FoodCard description="Massa fresca com camarões e pesto." isAdm={isAdm} title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
-          <FoodCard description="Massa fresca com camarões e pesto." isAdm={isAdm} title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
-        </Section>
-
-        <Section title="Sobremesas" id="Sobremesas">
-          <FoodCard description="Massa fresca com camarões e pesto." title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
-          <FoodCard description="Massa fresca com camarões e pesto." title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
-          <FoodCard description="Massa fresca com camarões e pesto." title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
-        </Section>
-
-        <Section title="Pratos Principais" id="Pratos Principais">
-          <FoodCard description="Massa fresca com camarões e pesto." title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
-          <FoodCard description="Massa fresca com camarões e pesto." title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
-          <FoodCard description="Massa fresca com camarões e pesto." title="Spaguetti Gambe >" price="79,97" photo="src/assets/foodTemplate.png" />
-        </Section>
+        
       </main>
 
       <Footer />

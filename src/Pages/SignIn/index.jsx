@@ -17,53 +17,52 @@ export function SignIn() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  function getWindowSize() {
-    const { innerWidth, innerHeight } = window;
-    return { innerWidth, innerHeight };
-  }
+  // function getWindowSize() {
+  //   const { innerWidth, innerHeight } = window;
+  //   return { innerWidth, innerHeight };
+  // }
 
-  useEffect(() => {
-    function handleWindowResize() {
-      setWindowSize(getWindowSize());
-    }
+  // useEffect(() => {
+  //   function handleWindowResize() {
+  //     setWindowSize(getWindowSize());
+  //   }
 
-    window.addEventListener('resize', handleWindowResize);
+  //   window.addEventListener('resize', handleWindowResize);
 
-    if (windowSize.innerWidth >= 1024) {
-      document.body.style.display = "grid";
-      document.body.style.placeItems = "center";
+  //   if (windowSize.innerWidth >= 1024) {
+  //     document.body.style.display = "grid";
+  //     document.body.style.placeItems = "center";
 
-    }
-    else {
-      document.body.style.display = "block";
-    }
+  //   }
+  //   else {
+  //     document.body.style.display = "block";
+  //   }
 
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('resize', handleWindowResize);
+  //   };
+  // }, []);
 
-  const [windowSize, setWindowSize] = useState(getWindowSize())
+  // const [windowSize, setWindowSize] = useState(getWindowSize())
 
-  window.addEventListener('resize', () => {
-    if (windowSize.innerWidth >= 1024) {
-      document.body.style.display = "grid";
-      document.body.style.placeItems = "center";
+  // window.addEventListener('resize', () => {
+  //   if (windowSize.innerWidth >= 1024) {
+  //     document.body.style.display = "grid";
+  //     document.body.style.placeItems = "center";
 
-    }
-    else {
-      document.body.style.display = "block";
-    }
+  //   }
+  //   else {
+  //     document.body.style.display = "block";
+  //   }
 
-  });
+  // });
 
   async function handleSignIn() {
     signIn({ email, password })
   }
 
-
   return (
-
+    
     <Container>
       <main>
         <div className="logo">
@@ -98,5 +97,7 @@ export function SignIn() {
 
       </main>
     </Container>
+
+    
   )
 }

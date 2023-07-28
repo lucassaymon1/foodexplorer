@@ -3,54 +3,37 @@ import { Input } from "../../Components/Input"
 import { Button } from "../../Components/Button"
 import { ButtonText } from "../../Components/ButtonText"
 
-import { useNavigate } from "react-router-dom"
-
 import { useRef, useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import {api} from "../../services"
 
 
 export function SignUp() {
-
-  function getWindowSize() {
-    const { innerWidth, innerHeight } = window;
-    return { innerWidth, innerHeight };
-  }
-
-  useEffect(() => {
-    function handleWindowResize() {
-      setWindowSize(getWindowSize());
-    }
-
-    window.addEventListener('resize', handleWindowResize);
-
-    if (windowSize.innerWidth >= 1024) {
-      document.body.style.display = "grid";
-      document.body.style.placeItems = "center";
-
-    }
-    else {
-      document.body.style.display = "block";
-    }
-
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
-  }, []);
-
-  const [windowSize, setWindowSize] = useState(getWindowSize())
-
-  window.addEventListener('resize', () => {
-    if (windowSize.innerWidth >= 1024) {
-      document.body.style.display = "grid";
-      document.body.style.placeItems = "center";
-
-    }
-    else {
-      document.body.style.display = "block";
-    }
-
-  });
-
+  
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   const navigate = useNavigate()
+
+  async function handleSignUp(){
+    try{
+      const response = await api.post("/users", {
+        name,
+        email,
+        password
+      })
+      alert("Novo usuário cadastrado com sucesso!")
+      navigate(-1)
+    }
+    catch(error){
+      if(error.response){
+        alert(error.response.data.message)
+      }
+      else{
+        alert("Não foi possível cadastrar o novo usuário.")
+      }
+    }
+  }
 
   return (
     <Container>
@@ -69,23 +52,25 @@ export function SignUp() {
             placeholder="Exemplo: Maria da Silva"
             type="text"
             title="Seu nome"
+            onChange={e => setName(e.target.value)}
           />
 
           <Input
             placeholder="Exemplo: exemplo@exemplo.com.br"
             type="email"
             title="Email"
+            onChange={e => setEmail(e.target.value)}
           />
 
           <Input
             placeholder="No mínimo 6 caracteres"
             type="password"
             title="Senha"
+            onChange={e => setPassword(e.target.value)}
           />
 
-          <Button title="Entrar" />
+          <Button title="Criar conta" onClick={handleSignUp}/>
           <ButtonText onClick={() => navigate("/")} title="Já tenho uma conta" />
-
 
         </Form>
 
