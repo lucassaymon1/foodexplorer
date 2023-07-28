@@ -14,7 +14,16 @@ function AuthProvider({ children }) {
       const response = await api.post("/sessions", { email, password })
       const { user, token } = response.data
 
-      setData({ user, token })
+      const assignUserAdm = {
+        isAdmin: user.isAdmin === 1 ? true : false
+      }
+
+      const assignUser = Object.assign(user, assignUserAdm)
+
+      setData({ 
+        user: assignUser,
+        token
+      })
 
       localStorage.setItem("@foodexplorer:user", JSON.stringify(user))
       localStorage.setItem("@foodexplorer:token", token)

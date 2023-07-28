@@ -55,15 +55,12 @@ export function New() {
     }
 
     const formNewData = new FormData();
-    
-    console.log(filePicture)
 
     try{
       if(!foodName){
         return(alert("Adicione um nome para o novo prato."))
       }
       if(!filePicture){
-        console.log(filePicture)
         return(alert("Adicione uma foto para o novo prato."))
       }
       if(!foodPrice){
@@ -90,7 +87,7 @@ export function New() {
       })
 
       alert("Novo prato cadastrado com sucesso!")
-      navigate("/")
+      navigate(-1)
     }
     catch(error){
       if (error.response){
@@ -99,6 +96,7 @@ export function New() {
       else{
         alert("Não foi possível adicionar o novo prato.")
       }
+      navigate(-1)
     }
 
   }

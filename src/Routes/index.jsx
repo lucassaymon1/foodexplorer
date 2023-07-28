@@ -1,15 +1,21 @@
 import { BrowserRouter } from "react-router-dom";
 import { useAuth } from "../hooks/auth"
 
-import { AppRoutes } from "./app.routes"
+import { AdmRoutes } from "./adm.routes"
+import { UserRoutes } from "./user.routes"
 import { AuthRoutes } from "./auth.routes"
 
-
+const AppRoutes = ({user}) => {
+  const isAdm = user.isAdmin
+  return(
+    isAdm ? <AdmRoutes/> : <UserRoutes/>
+  )
+}
 export function Routes() {
   const { user } = useAuth()
   return (
     <BrowserRouter>
-      {user ? <AppRoutes /> : <AuthRoutes />}
+      {user ? <AppRoutes user={user}/> : <AuthRoutes />}
     </BrowserRouter>
   )
 }

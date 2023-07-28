@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
   :root{
@@ -14,7 +14,7 @@ export default createGlobalStyle`
 
   body{
     color: #ffffff;
-    background-color: ${({theme}) => theme.COLORS.DARK_400};
+    background-color: ${({ theme }) => theme.COLORS.DARK_400};
     font-size: 1.4rem;
     position: relative;
     min-height: 100%;
@@ -28,7 +28,7 @@ export default createGlobalStyle`
   p, h2, h3, label{
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    color: ${({theme}) => theme.COLORS.LIGHT_300};
+    color: ${({ theme }) => theme.COLORS.LIGHT_300};
   }
   label{
     font-family: 'Roboto', sans-serif;
