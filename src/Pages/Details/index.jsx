@@ -12,11 +12,14 @@ import { CaretLeft } from "../../icons/CaretLeft"
 import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { api } from "../../services"
+import { useAuth } from "../../hooks/auth"
 
 import FoodTemplate1 from "../../assets/FoodTemplate1.png"
 
 export function Details() {
 
+  const {user} = useAuth()
+  const isAdm = user.isAdmin
   const [data, setData] = useState(null)
 
   const params = useParams()
@@ -37,7 +40,6 @@ export function Details() {
 
   }, [])
 
-  let isAdm = false;
   return (
     <Container>
       <Header />
@@ -62,7 +64,7 @@ export function Details() {
                 {
                   isAdm ?
                     <div className="order-container">
-                      <Button onClick={() => navigate("/edit")} title={`Editar prato`} />
+                      <Button onClick={() => navigate(`/edit/${data.id}`)} title={`Editar prato`} />
                     </div>
                     :
                     <div className="order-container">

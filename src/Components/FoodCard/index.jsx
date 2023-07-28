@@ -10,8 +10,12 @@ import { Quantify } from "../Quantify"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-export function FoodCard({ isAdm, description, title, price, photo, foodId }) {
+import { useAuth } from "../../hooks/auth"
 
+export function FoodCard({ description, title, price, photo, foodId }) {
+
+  const {user} = useAuth()
+  const isAdm = user.isAdmin
   const navigate = useNavigate()
 
   const [quantify, setQuantify] = useState("01")

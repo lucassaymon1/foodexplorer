@@ -11,13 +11,25 @@ import { Input } from "../../Components/Input"
 import { Button } from "../Button"
 import { ButtonText } from "../ButtonText"
 
+import { useAuth } from "../../hooks/auth"
+
 import ExplorerIcon from "../../icons/ExplorerIcon.svg"
 
 export function Header() {
+  const {user, signOut} = useAuth()
+  const isAdm = user.isAdmin
+
   const [menuState, setMenuState] = useState(false)
-  const isAdm = true
   const location = useLocation()
   const navigate = useNavigate()
+
+  function handleSignOut(){
+    const logOut = confirm("Tem certeza que deseja sair?")
+    if(logOut){
+      navigate("/")
+      signOut()
+    }
+  }
 
   function handleToggleMenu() {
     setMenuState(!menuState)
@@ -32,7 +44,7 @@ export function Header() {
     }
   }
   return (
-    <Container isAdm={isAdm}>
+    <Container admUser={isAdm}>
 
       <div className="header">
         <button className="hamburger" onClick={handleToggleMenu}>
@@ -72,7 +84,7 @@ export function Header() {
         }
 
 
-        <ButtonText className="signOut" icon={SignOut} />
+        <ButtonText className="signOut" icon={SignOut} onClick={handleSignOut}/>
 
         {
           isAdm ?
@@ -91,11 +103,14 @@ export function Header() {
       <div className={menuState ? "menu menu-active" : "menu menu-inactive"}>
         <Input placeholder="Busque por pratos ou ingredientes" type="text" icon={Search} />
         <ul>
+          {
+            isAdm &&
+            <li>
+              <button onClick={handleNew}>Novo prato</button>
+            </li>
+          }
           <li>
-            <button onClick={handleNew}>Novo prato</button>
-          </li>
-          <li>
-            <button>Sair</button>
+            <button onClick={handleSignOut}>Sair</button>
           </li>
         </ul>
       </div>

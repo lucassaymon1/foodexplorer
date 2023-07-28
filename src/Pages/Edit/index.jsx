@@ -52,9 +52,20 @@ export function Edit() {
   async function handleDeleteFood(){
     const deleteFood = confirm("Tem certeza de que deseja excluir este prato do cardápio?")
     if(deleteFood){
-      await api.delete(`/foods/${params.id}`)
-      alert("O prato foi excluído do cardápio.")
-      navigate("/")
+      try{
+        await api.delete(`/foods/${params.id}`)
+        alert("O prato foi excluído do cardápio.")
+        navigate("/")
+      }
+      catch(error){
+        if(error.response){
+          alert(error.response.data.message)
+        }
+        else{
+          alert("Não foi possível excluir o prato.")
+        }
+        navigate("/")
+      }
 
     }
   }
@@ -65,14 +76,10 @@ export function Edit() {
     formUpdateData.append("picture", filePicture)
 
     try{
-      console.log("cheguei aqui")
 
       if(!filePicture){
-        console.log(filePicture)
         return(alert("Adicione uma foto para o novo prato."))
       }
-
-      console.log("cheguei aqui")
 
       const response = await api.put(`/foods/${params.id}`, {
         name: name ? name : data.name,
@@ -81,11 +88,6 @@ export function Edit() {
         description: description ? description : data.description,
         tags
       })
-
-      console.log(response)
-
-      console.log("cheguei aqui")
-
 
       await api.patch(`/foods/picture/${params.id}`, formUpdateData)
 
