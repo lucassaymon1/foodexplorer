@@ -44,7 +44,7 @@ export function Header() {
     }
   }
   return (
-    <Container admUser={isAdm}>
+    <Container admin={isAdm ? "true" : undefined}>
 
       <div className="header">
         <button className="hamburger" onClick={handleToggleMenu}>

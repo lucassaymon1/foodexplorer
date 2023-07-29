@@ -9,12 +9,12 @@ export const Container = styled.div`
 	position: relative;
 
 	text-align: center;
-	padding: 2.4rem;
+	padding: 2.4rem 2.4rem 0;
 
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: ${({ admin }) => (admin ? 'center' : 'start')};
 	gap: 1.2rem;
 	z-index: 0;
 
@@ -74,7 +74,7 @@ export const Container = styled.div`
 	@media screen and (min-width: 1024px) {
 		min-width: 30.4rem;
 		height: 46.2rem;
-		padding: 2.4rem 2.6rem 3.2rem;
+		padding: ${({ admin }) => (admin ? '0 2.6rem 0rem' : '2.4rem 2.6rem 0rem')};
 
 		.details-button {
 			img {

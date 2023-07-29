@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom"
 
 import { useAuth } from "../../hooks/auth"
 
-export function FoodCard({ description, title, price, photo, foodId }) {
+export function FoodCard({ description, title, price, photo, foodId, admin}) {
 
   const {user} = useAuth()
   const isAdm = user.isAdmin
@@ -20,7 +20,7 @@ export function FoodCard({ description, title, price, photo, foodId }) {
 
   const [quantify, setQuantify] = useState("01")
   return (
-    <Container>
+    <Container admin={isAdm ? "true" : undefined}>
       {
         isAdm ?
           <button className="icon" onClick={() => navigate(`/edit/${foodId}`)}>

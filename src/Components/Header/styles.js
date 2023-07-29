@@ -13,8 +13,8 @@ export const Container = styled.header`
 		grid-auto-flow: column;
 		width: 100%;
 		background-color: ${({ theme }) => theme.COLORS.DARK_600};
-		padding: ${({ admUser }) =>
-			admUser ? '5.5rem 0 2.8rem 2.4rem' : '5.5rem 2.4rem 2.8rem 2.4rem'};
+		padding: ${({ admin }) =>
+			admin ? '5.5rem 0 2.8rem 2.4rem' : '5.5rem 2.4rem 2.8rem 2.4rem'};
 
 		z-index: 2000;
 		position: relative;

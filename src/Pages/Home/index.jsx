@@ -12,7 +12,6 @@ import { useAuth } from "../../hooks/auth"
 export function Home() {
 
   const { user, signOut } = useAuth()
-  const isAdm = user.isAdmin
 
   const [search, setSearch] = useState("")
   
@@ -90,7 +89,7 @@ export function Home() {
           foods && categories.map(category => {
             const sectionFoods = foods.filter(food => (food.category === category))
             return(
-              <Section key={category} title={category} id={category}>
+              <Section key={category} title={category} id={category} left={`${category}L`} right={`${category}R`}>
                 {
                   sectionFoods && sectionFoods.map(sectionFood => (
                     <FoodCard

@@ -13,6 +13,7 @@ export const Container = styled.div`
 
 			overflow-x: auto;
 			margin-bottom: 2.4rem;
+			padding-right: 30.4rem;
 		}
 		.carousel-button {
 			display: none;
@@ -37,19 +38,49 @@ export const Container = styled.div`
 			}
 
 			.carousel-button {
-				display: block;
+				transition: all ease 0.2s;
+
+				border-radius: 2px;
+				border: none;
+				width: 27.8rem;
+
+				height: 100%;
+				display: flex;
+				align-items: center;
+
 				position: absolute;
-				top: 44%;
+				top: 50%;
+				transform: translateY(-50%);
 				z-index: 3000;
+				svg {
+					margin-inline: 2rem;
+					margin-bottom: 2rem;
+					width: 4rem;
+				}
+				&:hover {
+					filter: brightness(3.5);
+				}
 			}
 			.caret-right {
-				right: 3.05rem;
+				background: linear-gradient(
+					90deg,
+					rgba(0, 10, 15, 0.172541) 0%,
+					#000a0f 100%
+				);
+				justify-content: end;
+				right: 0;
 			}
 			.caret-left {
-				left: 3.05rem;
+				background: linear-gradient(
+					270deg,
+					rgba(0, 10, 15, 0.05) 0%,
+					#000a0f 100%
+				);
+				justify-content: start;
+				left: 0;
 			}
 
-			.gradient {
+			/* .gradient {
 				height: 100%;
 				position: absolute;
 				z-index: 2000;
@@ -68,7 +99,7 @@ export const Container = styled.div`
 				position: absolute;
 				right: 0;
 				width: 22.4rem;
-			}
+			} */
 		}
 	}
 `
