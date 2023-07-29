@@ -1,17 +1,20 @@
 import { styled } from 'styled-components'
 
 export const Container = styled.div`
+	a {
+		margin: 3.2rem 6rem 0;
+		font-size: 2.4rem;
+		text-align: left;
+	}
 	main {
 		text-align: center;
-		margin: 3.2rem 6rem 0;
+		margin: 0 6rem 0;
 		padding-bottom: 5rem;
-		a {
-			font-size: 2.4rem;
-			text-align: left;
-		}
+		height: 100%;
+		display: grid;
 
 		img {
-			margin: 1.6rem auto;
+			margin: 1.6rem auto 1.2rem;
 			width: 26.3rem;
 			height: 26.3rem;
 			object-fit: cover;
@@ -30,6 +33,10 @@ export const Container = styled.div`
 			max-width: 28.6rem;
 		}
 
+		.details-container {
+			margin-bottom: 11.5rem;
+		}
+
 		.tags-container {
 			margin: 0 auto 4.8rem;
 			display: flex;
@@ -38,7 +45,7 @@ export const Container = styled.div`
 			align-items: center;
 			gap: 2.4rem;
 
-			max-width: 28.6rem;
+			max-width: 31.6rem;
 		}
 
 		.order-container {
@@ -60,8 +67,9 @@ export const Container = styled.div`
 			}
 
 			.quantify {
+				gap: 1.8rem;
 				button {
-					width: 2.2rem;
+					width: 4rem;
 				}
 				font-size: 2.2rem;
 			}
@@ -69,14 +77,21 @@ export const Container = styled.div`
 	}
 
 	@media screen and (min-width: 1024px) {
-		main {
+		a {
+			font-weight: 500;
 			margin-inline: calc(2.3rem + 6.8625vw);
-			padding-bottom: 7.4rem;
+		}
+		main {
+			align-items: center;
+			justify-content: center;
+			margin-inline: calc(2.3rem + 6.8625vw);
+			padding: 0;
+
 			.details-container {
-				margin-top: 4.2rem;
+				margin-block: 4.2rem;
 				display: grid;
 				gap: 4.7rem;
-				grid-template-columns: 1fr 2fr;
+				grid-template-columns: 1.5fr 2fr;
 				img {
 					margin: 0;
 					width: 39rem;
@@ -87,6 +102,7 @@ export const Container = styled.div`
 					flex-direction: column;
 					text-align: left;
 					justify-content: center;
+
 					.tags-container {
 						margin-inline: 0;
 						text-align: left;

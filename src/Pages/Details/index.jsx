@@ -44,8 +44,8 @@ export function Details() {
     <Container>
       <Header />
 
+      <ButtonText onClick={() => navigate(-1)} icon={CaretLeft} title="voltar" />
       <main>
-        <ButtonText onClick={() => navigate(-1)} icon={CaretLeft} title="voltar" />
           {data && 
             
             <div className="details-container">

@@ -72,19 +72,27 @@ export function Header() {
           </div>
 
         </div>
+        <div className="header-input-container">
+          <Input className="desktop-input" placeholder="Busque por pratos ou ingredientes" type="text" icon={Search} />
 
-        <Input className="desktop-input" placeholder="Busque por pratos ou ingredientes" type="text" icon={Search} />
+        </div>
 
-        {
-          isAdm ?
-            <Button onClick={() => navigate("/new")} className="desktop-button" title="Novo prato" />
-            :
-            <Button className="desktop-button" title="Meus Pedidos (0)" icon={Receipt} />
+        <div className="headerButtonContainer">
+          {
+            isAdm ?
+              <Button onClick={() => navigate("/new")} className="desktop-button" title="Novo prato" />
+              :
+              <Button className="desktop-button" title="Meus Pedidos (0)" icon={Receipt} />
 
-        }
+          }
 
+        </div>
 
-        <ButtonText className="signOut" icon={SignOut} onClick={handleSignOut}/>
+        
+        <button onClick={handleSignOut} className="signOut">
+          <ButtonText icon={SignOut}/>
+
+        </button>
 
         {
           isAdm ?

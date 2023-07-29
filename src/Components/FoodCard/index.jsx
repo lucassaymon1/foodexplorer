@@ -17,8 +17,7 @@ export function FoodCard({ description, title, price, photo, foodId, admin}) {
   const {user} = useAuth()
   const isAdm = user.isAdmin
   const navigate = useNavigate()
-
-  const [quantify, setQuantify] = useState("01")
+  
   return (
     <Container admin={isAdm ? "true" : undefined}>
       {

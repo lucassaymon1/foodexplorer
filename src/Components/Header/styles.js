@@ -6,7 +6,7 @@ export const Container = styled.header`
 		display: grid;
 		flex-direction: row;
 		white-space: nowrap;
-		grid-template-columns: 1fr 3fr 1fr;
+		grid-template-columns: 0fr 3fr 0fr;
 		grid-row: 1;
 		justify-content: space-between;
 		align-items: center;
@@ -154,9 +154,10 @@ export const Container = styled.header`
 			justify-content: center;
 		}
 
-		> .desktop-input,
+		.header-input-container,
+		.headerButtonContainer,
 		.desktop-button,
-		.input-wrapper,
+		.desktop-input,
 		.signOut {
 			display: none;
 		}
@@ -218,39 +219,66 @@ export const Container = styled.header`
 
 		.header {
 			.signOut {
-				display: inline-block;
+				width: 4.5rem;
+				height: 4.5rem;
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				transition: all ease 0.2s;
+				border: none;
+				border-radius: 6px;
+				background: none;
+
+				&:hover {
+					background: #15242c;
+				}
 			}
 			display: grid;
-			grid-template-columns: 0fr 2fr 0.5fr 0fr;
+			grid-template-columns: 0.25fr 1.5fr 0.5fr 0fr;
 			gap: 3.2rem;
 			padding-inline: 12.3rem;
 			width: 100%;
-			> .desktop-button {
+			.headerButtonContainer {
 				display: flex;
 				align-items: center;
-				gap: 0.8rem;
-				width: max-content;
-				padding-inline: 2.6rem;
+				justify-content: center;
+
+				.desktop-button {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					gap: 0.8rem;
+					width: 100%;
+					max-width: 21.6rem;
+					padding-inline: 2.6rem;
+				}
 			}
 			.hamburger {
 				display: none;
 			}
 
-			> .input-wrapper {
-				display: block;
+			.input-wrapper {
+				display: flex;
+				padding-left: 6rem;
 				input {
 					height: 4.8rem;
 					border-radius: 0.5rem;
 				}
 			}
-			> .desktop-button {
-				max-width: 21.6rem;
-			}
 
-			> .desktop-input,
-			.input-wrapper {
+			.header-input-container {
 				display: flex;
-				min-width: 100%;
+				align-items: center;
+				justify-content: center;
+
+				.desktop-input {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					width: 100%;
+				}
 			}
 
 			.logo-container {

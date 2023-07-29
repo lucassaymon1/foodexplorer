@@ -1,6 +1,9 @@
 import { styled } from 'styled-components'
 
 export const Container = styled.div`
+	transition: border-color ease 0.2s;
+	border: 1px solid transparent;
+
 	background: ${({ theme }) => theme.COLORS.DARK_200};
 	border-radius: 0.8rem;
 	min-width: 21rem;
@@ -18,14 +21,36 @@ export const Container = styled.div`
 	gap: 1.2rem;
 	z-index: 0;
 
+	&:hover {
+		border: 1px solid ${({ theme }) => theme.COLORS.CAKE_200};
+	}
+
 	.icon {
+		transition: all cubic-bezier(0.01, 0.91, 0.43, 1.18) 0.3s;
+		width: 4rem;
+		height: 4rem;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
 		position: absolute;
-		top: 1.6rem;
-		right: 1.6rem;
+		top: 0.8rem;
+		right: 0.8rem;
+		z-index: 2000;
+
 		outline: none;
 		border: none;
+		border-radius: 50%;
 		background: none;
-		z-index: 2000;
+
+		svg {
+			width: 2.4rem;
+		}
+
+		&:hover {
+			background-color: rgba(220, 220, 220, 0.3);
+		}
 	}
 
 	.quantify-container {
@@ -34,6 +59,13 @@ export const Container = styled.div`
 		flex-direction: column;
 		align-items: center;
 		gap: 0.8rem;
+
+		button {
+			height: 3.2rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
 	}
 	.quantify {
 		h3 {
@@ -76,6 +108,17 @@ export const Container = styled.div`
 		height: 46.2rem;
 		padding: ${({ admin }) => (admin ? '0 2.6rem 0rem' : '2.4rem 2.6rem 0rem')};
 
+		.icon {
+			width: 5rem;
+			height: 5rem;
+
+			top: 0.8rem;
+			right: 1.2rem;
+			svg {
+				width: 4rem;
+			}
+		}
+
 		.details-button {
 			img {
 				width: 17.6rem;
@@ -101,13 +144,16 @@ export const Container = styled.div`
 
 		.quantify-container {
 			flex-direction: row;
-			gap: 1.6rem;
-			padding-inline: 2.4rem;
+			padding-inline: 1.2rem;
 			.quantify {
 				h3 {
 					font-size: 2rem;
 					font-weight: 700;
 				}
+			}
+			button {
+				margin-block: 0.8rem;
+				height: 4.8rem;
 			}
 		}
 	}

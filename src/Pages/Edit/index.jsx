@@ -235,7 +235,7 @@ export function Edit() {
             </div>
 
             <div className="button-container">
-              <Button onClick={handleDeleteFood} title="Excluir prato" />
+              <Button onClick={handleDeleteFood} className="delete-button" title="Excluir prato" />
               <Button onClick={handleUpdateFood} title="Salvar alterações" />
 
             </div>

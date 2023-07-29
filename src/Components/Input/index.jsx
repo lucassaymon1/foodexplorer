@@ -21,7 +21,7 @@ export function Input({ inputType, icon: Icon, title, ...rest }) {
   else {
 
     return (
-      <TextContainer>
+      <TextContainer className="desktop-input">
         <label htmlFor={title}>{title}</label>
         <div className="input-wrapper change-bgcolor">
           {Icon && <Icon />}

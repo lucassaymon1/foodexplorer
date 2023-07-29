@@ -182,6 +182,13 @@ export const Form = styled.form`
 		button:nth-child(1) {
 			background: #0d161b;
 		}
+
+		.delete-button {
+			background: #0d161b;
+			&:hover {
+				background: #15242c;
+			}
+		}
 	}
 
 	@media screen and (min-width: 1024px) {
