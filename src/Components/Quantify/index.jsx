@@ -1,12 +1,18 @@
 import { Container } from "./styles";
 import { Minus } from "../../icons/Minus";
 import { Plus } from "../../icons/Plus";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export function Quantify({ ...rest }) {
+export function Quantify({ onQuantifyChange, ...rest }) {
 
   const [quantify, setQuantify] = useState(1)
   const [isHigherThan, setIsHigherThan] = useState(false)
+
+  useEffect(() => {
+
+    onQuantifyChange(quantify)
+
+  }, [quantify, onQuantifyChange])
 
   function handleMinus(){
 

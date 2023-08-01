@@ -17,13 +17,25 @@ import { useAuth } from "../../hooks/auth"
 import FoodTemplate1 from "../../assets/FoodTemplate1.png"
 
 export function Details() {
-
+  const [data, setData] = useState(null)
+  const [quantify, setQuantify] = useState(1)
+  const [price, setPrice] = useState("")
+  
   const {user} = useAuth()
   const isAdm = user.isAdmin
-  const [data, setData] = useState(null)
 
   const params = useParams()
   const navigate = useNavigate()
+
+  const formatter = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    minimumFractionDigits: 2
+  })
+
+  function handleQuantifyChange(newQuantify){
+    setQuantify(newQuantify)
+  }
 
   useEffect(() => {
 
@@ -40,8 +52,14 @@ export function Details() {
 
   }, [])
 
+  useEffect(() => {
+    if(data && quantify){
+      setPrice(data.price * quantify)
+    }
+  }, [data, quantify])
+
   return (
-    <Container>
+    <Container admin={isAdm ? "true" : undefined}>
       <Header />
 
       <ButtonText onClick={() => navigate(-1)} icon={CaretLeft} title="voltar" />
@@ -68,8 +86,8 @@ export function Details() {
                     </div>
                     :
                     <div className="order-container">
-                      <Quantify className="quantify" />
-                      <Button onClick={() => navigate("/")} icon={Receipt} title={`pedir · R$ ${data.price}`} />
+                      <Quantify className="quantify" onQuantifyChange={handleQuantifyChange}/>
+                      <Button onClick={() => navigate("/")} icon={Receipt} title={`Incluir · ${formatter.format(price)}`} />
                     </div>
 
 
