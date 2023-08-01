@@ -90,7 +90,7 @@ export function Header() {
 
         
         <button onClick={handleSignOut} className="signOut">
-          <ButtonText icon={SignOut}/>
+           <SignOut/>
 
         </button>
 

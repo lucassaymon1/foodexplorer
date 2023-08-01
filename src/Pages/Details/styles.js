@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 
 export const Container = styled.div`
-	a {
+	> a {
 		margin: 3.2rem 6rem 0;
 		font-size: 2.4rem;
 		text-align: left;
@@ -49,11 +49,14 @@ export const Container = styled.div`
 		}
 
 		.order-container {
-			display: flex;
+			display: ${({ admin }) => (admin ? 'flex' : 'grid')};
+			grid-template-columns: 1fr 3fr;
+			align-items: center;
 			justify-content: center;
 			gap: 2rem;
-			max-width: 31.6rem;
+
 			margin: auto;
+			max-width: 31.6rem;
 			> button {
 				display: flex;
 				gap: 0.8rem;
@@ -67,7 +70,7 @@ export const Container = styled.div`
 			}
 
 			.quantify {
-				gap: 1.8rem;
+				gap: 0.8rem;
 				button {
 					width: 4rem;
 				}
@@ -77,7 +80,7 @@ export const Container = styled.div`
 	}
 
 	@media screen and (min-width: 1024px) {
-		a {
+		> a {
 			font-weight: 500;
 			margin-inline: calc(2.3rem + 6.8625vw);
 		}
@@ -112,6 +115,13 @@ export const Container = styled.div`
 					.order-container {
 						margin: 0;
 						justify-content: flex-start;
+						.quantify {
+							gap: 1.6rem;
+						}
+						> button {
+							width: max-content;
+							padding-inline: 2.6rem;
+						}
 					}
 					h1 {
 						font-size: 4rem;

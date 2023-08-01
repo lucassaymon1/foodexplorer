@@ -127,8 +127,8 @@ export const Container = styled.div`
 			h3 {
 				font-weight: 700;
 				font-size: 2.4rem;
-				line-height: 3.2rem;
-				margin-block: 1.5rem;
+				line-height: 2.4rem;
+				margin: 1rem 0 1.6rem;
 			}
 			h2 {
 				font-size: 3.2rem;
@@ -152,7 +152,6 @@ export const Container = styled.div`
 				}
 			}
 			button {
-				margin-block: 0.8rem;
 				height: 4.8rem;
 			}
 		}

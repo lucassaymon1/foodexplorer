@@ -132,10 +132,7 @@ export function Edit() {
     <Container>
       <Header />
       <main>
-        <div className="button-text">
-          <ButtonText onClick={() => navigate(-1)} icon={CaretLeft} title="voltar" />
-
-        </div>
+        <ButtonText onClick={() => navigate(-1)} icon={CaretLeft} title="voltar" />
 
         {
           data &&

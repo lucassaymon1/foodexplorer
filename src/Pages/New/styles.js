@@ -19,12 +19,13 @@ export const Container = styled.div`
 		margin: 1.1rem 3.5rem 0;
 		padding-bottom: 7.4rem;
 
-		.button-text {
-			a {
-				font-size: 1.8rem;
-			}
+		> a {
+			margin-left: 0.4rem;
+			font-size: 1.8rem;
+			font-weight: 400;
+
 			svg {
-				width: 0.8rem;
+				height: 15px;
 			}
 		}
 	}
@@ -33,14 +34,13 @@ export const Container = styled.div`
 		main {
 			margin-inline: calc(2.3rem + 6.8625vw);
 			margin-block: 4rem;
-			.button-text {
-				a {
-					font-size: 2.4rem;
-					font-weight: 700;
-					color: ${({ theme }) => theme.COLORS.LIGHT_300};
-				}
+			> a {
+				gap: 1rem;
+				font-size: 2.4rem;
+				font-weight: 600;
+				color: ${({ theme }) => theme.COLORS.LIGHT_300};
 				svg {
-					width: 1.8rem;
+					height: 22px;
 				}
 			}
 		}
