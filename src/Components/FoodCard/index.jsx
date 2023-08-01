@@ -14,9 +14,24 @@ import { useAuth } from "../../hooks/auth"
 
 export function FoodCard({ description, title, price, photo, foodId, admin}) {
 
+  const [quantify, setQuantify] = useState(1)
+
   const {user} = useAuth()
   const isAdm = user.isAdmin
   const navigate = useNavigate()
+  const foodPrice = price * quantify
+
+  var formatter = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    minimumFractionDigits: 2
+  })
+
+  const formattedPrice = formatter.format(foodPrice)
+
+  function handleQuantifyChange(newQuantity){
+    setQuantify(newQuantity)
+  }
   
   return (
     <Container admin={isAdm ? "true" : undefined}>
@@ -35,9 +50,9 @@ export function FoodCard({ description, title, price, photo, foodId, admin}) {
       }
       <button className="details-button" onClick={() => navigate(`/details/${foodId}`)}>
         <img src={photo} alt="refeição" />
-        <h3>{title}</h3>
+        <h3>{`${title} >`}</h3>
         <p className="description">{description}</p>
-        <h2>R$ {price}</h2>
+        <h2>{formattedPrice}</h2>
 
       </button>
 
@@ -48,7 +63,7 @@ export function FoodCard({ description, title, price, photo, foodId, admin}) {
 
           <div className="quantify-container">
             <div className="quantify">
-              <Quantify />
+              <Quantify onQuantifyChange={handleQuantifyChange} />
             </div>
             <Button title="incluir" />
 
