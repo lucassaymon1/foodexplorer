@@ -105,6 +105,7 @@ export const Container = styled.div`
 
 	@media screen and (min-width: 1024px) {
 		min-width: 30.4rem;
+		max-width: 30.4rem;
 		height: 46.2rem;
 		padding: ${({ admin }) => (admin ? '0 2.6rem 0rem' : '2.4rem 2.6rem 0rem')};
 

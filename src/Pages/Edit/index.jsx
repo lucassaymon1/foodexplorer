@@ -170,8 +170,8 @@ export function Edit() {
                     onChange={e => setCategory(e.target.value)}
                   >
                     <option value="Refeições">Refeições</option>
-                    <option value="Pratos principais">Pratos principais</option>
                     <option value="Sobremesas">Sobremesas</option>
+                    <option value="Bebidas">Bebidas</option>
                   </select>
                   <div className="icon-container">
                     <CaretLeft />

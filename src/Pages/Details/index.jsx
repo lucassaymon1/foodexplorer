@@ -67,7 +67,10 @@ export function Details() {
           {data && 
             
             <div className="details-container">
-              <img src={data.picture} alt="Image of the selected food" />
+              <div className="img-container">
+                <img src={data.picture} alt="Image of the selected food" />
+
+              </div>
               <div className="data-container">
                 <h1>{data.name}</h1>
                 <p>{data.description}</p>

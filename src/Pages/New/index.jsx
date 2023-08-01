@@ -78,7 +78,10 @@ export function New() {
       formNewData.append("price", foodPrice);
       formNewData.append("description", foodDescription);
       formNewData.append("category", foodCategory);
-      formNewData.append("formTags", tags)
+      if(tags){
+        formNewData.append("formTags", tags)
+
+      }
 
       await api.post("/foods", formNewData, {
         headers: {

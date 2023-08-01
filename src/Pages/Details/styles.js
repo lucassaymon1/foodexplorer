@@ -13,12 +13,18 @@ export const Container = styled.div`
 		height: 100%;
 		display: grid;
 
-		img {
-			margin: 1.6rem auto 1.2rem;
-			width: 26.3rem;
-			height: 26.3rem;
-			object-fit: cover;
-			border-radius: 50%;
+		.img-container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			img {
+				margin: 1.6rem auto 1.2rem;
+				width: 26.3rem;
+				height: 26.3rem;
+				object-fit: cover;
+				border-radius: 50%;
+			}
 		}
 
 		h1 {
@@ -88,10 +94,11 @@ export const Container = styled.div`
 			align-items: center;
 			justify-content: center;
 			margin-inline: calc(2.3rem + 6.8625vw);
+			padding-bottom: 5rem;
 			padding: 0;
 
 			.details-container {
-				margin-block: 4.2rem;
+				margin: 4.2rem 0 11.2rem;
 				display: grid;
 				gap: 4.7rem;
 				grid-template-columns: 1.5fr 2fr;

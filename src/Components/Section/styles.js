@@ -13,7 +13,6 @@ export const Container = styled.div`
 
 			overflow-x: auto;
 			margin-bottom: 2.4rem;
-			padding-right: 30.4rem;
 		}
 		.carousel-button {
 			display: none;
