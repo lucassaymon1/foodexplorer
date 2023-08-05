@@ -8,6 +8,8 @@ import { api } from "../../services/index"
 import { useState, useEffect } from "react"
 import { useAuth } from "../../hooks/auth"
 
+import desktopImg from "../../assets/pngegg1.png" 
+import mobileImg from "../../assets/pngegg2.png" 
 
 export function Home() {
 
@@ -74,8 +76,8 @@ export function Home() {
         <div className="banner">
 
           <div className="img-container">
-            <img className="mobile-img" src="src/assets/pngegg 2.png" alt="Macarones com frutinhas e folhas" />
-            <img className="desktop-img" src="src/assets/pngegg 1.png" alt="Macarones com frutinhas e folhas" />
+            <img className="mobile-img" src={mobileImg} alt="Macarones com frutinhas e folhas" />
+            <img className="desktop-img" src={desktopImg} alt="Macarones com frutinhas e folhas" />
 
           </div>
           <div className="lettering-container">
