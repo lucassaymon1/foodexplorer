@@ -15,7 +15,7 @@ import { useAuth } from "../../hooks/auth"
 
 import ExplorerIcon from "../../icons/ExplorerIcon.svg"
 
-export function Header() {
+export function Header({value, onChange}) {
   const {user, signOut} = useAuth()
   const isAdm = user.isAdmin
 
@@ -73,7 +73,14 @@ export function Header() {
 
         </div>
         <div className="header-input-container">
-          <Input className="desktop-input" placeholder="Busque por pratos ou ingredientes" type="text" icon={Search} />
+          <Input
+            className="desktop-input" 
+            placeholder="Busque por pratos ou ingredientes" 
+            type="text" 
+            icon={Search} 
+            onChange={onChange} 
+            value={value}
+          />
 
         </div>
 
@@ -109,7 +116,7 @@ export function Header() {
       </div>
 
       <div className={menuState ? "menu menu-active" : "menu menu-inactive"}>
-        <Input placeholder="Busque por pratos ou ingredientes" type="text" icon={Search} />
+        <Input placeholder="Busque por pratos ou ingredientes" type="text" icon={Search} value={value} onChange={onChange} />
         <ul>
           {
             isAdm &&

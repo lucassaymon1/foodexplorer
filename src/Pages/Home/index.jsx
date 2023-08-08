@@ -16,23 +16,9 @@ export function Home() {
   const { user, signOut } = useAuth()
 
   const [search, setSearch] = useState("")
-  
-  const [tags, setTags] = useState([])
-  const [foods, setFoods] = useState([])
+  const [foods, setFoods] = useState([]) 
 
   const categories = Array.from(new Set(foods.map(food => food.category)));
-
-  // useEffect(() => {
-  //   const admin = user.isAdm
-  //   setIsAdm(admin === 1 ? false : true)
-  //   async function fetchTags() {
-  //     const response = await api.get("/tags")
-  //     setTags(response.data)
-  //     console.log(response.data)
-  //   }
-    
-  //   fetchTags()
-  // }, [])
 
   function updateFoodPictures(foods){
     if(foods){
@@ -48,30 +34,33 @@ export function Home() {
   }
 
   useEffect(() => {
-    
     async function ensureAuthenticated(){
       try{
         const response = await api.get("/sessions")
-        fetchFoods()
       }
       catch(error){
         if(error.response.status === 401){
           signOut()
+          return
         }
       }
-    
-    }
-    async function fetchFoods() {
-      const response = await api.get("/foods")
-      const foodsWithPictures = updateFoodPictures(response.data)
-      setFoods(foodsWithPictures)
     }
     ensureAuthenticated()
   }, [])
 
+  useEffect(() => {
+    
+    async function fetchFoods() {
+      const response = await api.get(`/foods?search=${search}`)
+      const foodsWithPictures = updateFoodPictures(response.data)
+      setFoods(foodsWithPictures)
+    }
+    fetchFoods()
+  }, [search])
+
   return (
     <Container>
-      <Header />
+      <Header value={search} onChange={e => setSearch(e.target.value)}/>
       <main>
         <div className="banner">
 
