@@ -30,7 +30,17 @@ Senha: `123456`
 
 Enquanto usuário cliente, você poderá visualizar todos os pratos disponíveis no cardápio e aumentar ou diminuir a quantidade de itens a serem incluidos no pedido, e isso será refletido no preço exibido pelo produto mencionado.
 
-## visualização de páginas pelo usuário admin
+## Criar conta e fazer login
+
+Se optar por criar uma conta, é possível fazer isso através da página de cadastro do usuário. Preencha os campos com suas informações, e então preencha-os novamente na tela de login.
+
+![SignUpPage-FoodExplorer](https://github.com/lucassaymon1/Food-Explorer-front/assets/102837549/eb071fce-0d78-40f8-9c11-7801d998d661)
+
+
+![LoginPage-FoodExplorer](https://github.com/lucassaymon1/Food-Explorer-front/assets/102837549/26ab958a-7046-4b82-b52e-3a161613ff47)
+
+
+## Visualização de páginas pelo usuário admin
 
 ### Página principal:
 
