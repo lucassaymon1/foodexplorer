@@ -1,7 +1,7 @@
 {
   "name": "foodexplorer-front",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,6 +9,9 @@
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
+  "keywords": [],
+  "author": "Lucas Saymon Oliveira de Aragão",
+  "license": "ISC",
   "dependencies": {
     "axios": "^1.4.0",
     "react": "^18.2.0",
