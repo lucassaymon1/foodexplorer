@@ -4,7 +4,7 @@ Esta é uma aplicação front-end que consome uma api própria para mostrar, cri
 
 ## Instruções e deploy
 
-Para acessar e usar a aplicação, basta acessar o link de onde foi feito o deploy do projeto em https://foodexplorer-vacherin-303ff0.netlify.app
+Para acessar e usar a aplicação, basta acessar o link de onde foi feito o deploy do projeto em https://lsfoodexplorer.netlify.app
 
 Existem dois tipos de usuários possíveis para esta aplicação: usuário admin, e usuário cliente. É possível também criar um usuário próprio e acessar como cliente.
 
