@@ -13,9 +13,14 @@
   "author": "Lucas Saymon Oliveira de Aragão",
   "license": "ISC",
   "dependencies": {
+    "@chakra-ui/react": "^3.15.0",
+    "@emotion/react": "^11.14.0",
     "axios": "^1.4.0",
+    "dotenv": "^16.4.7",
+    "next-themes": "^0.4.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.5.0",
     "react-router-dom": "^6.11.2",
     "styled-components": "^6.0.0-rc.2"
   },

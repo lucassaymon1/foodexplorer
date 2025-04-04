@@ -1,28 +1,62 @@
-export default {
-  COLORS: {
-    LIGHT_300: "#E1E1E6", // TEXT COLOR
-    LIGHT_400: "#7C7C8A", // INPUT TEXT
-    LIGHT_500: "#C4C4CC", // DESCRIPTION TEXT
-    LIGHT_700: "#4D585E", // FOOTER TEXT
-    LIGHT_600: "#76797B",
+import { createSystem, defineConfig } from '@chakra-ui/react'
 
-    CAKE_200: "#82F3FF", // PRICING TEXT 
+// Criando o tema para o Chakra UI sem modificar o original
 
-    TOMATO_100: "#750310",  // DEFAULT BUTTON
-    TOMATO_200: "#92000E", // CLIQUED BUTTON
-    TOMATO_400: "#AB4D55", // HOVER BUTTON
+const theme = {
+	COLORS: {
+		LIGHT_300: '#E1E1E6', // TEXT COLOR
+		LIGHT_400: '#7C7C8A', // INPUT TEXT
+		LIGHT_500: '#C4C4CC', // DESCRIPTION TEXT
+		LIGHT_600: '#76797B',
+		LIGHT_700: '#4D585E', // FOOTER TEXT
 
-    DARK_200: "#00070A", // FOOD CARDS
-    DARK_400: "#000A0F", // 
-    DARK_600: "#00111A", // DARK BLUE CONTAINERS
-    DARK_700: "#001119", // DARK BLUE CONTAINERS
-    DARK_900: "#0D1D25", // INPUTS
-    DARK_1000: "#192227", // TAGS
+		CAKE_200: '#82F3FF', // PRICING TEXT
 
+		TOMATO_100: '#750310', // DEFAULT BUTTON
+		TOMATO_200: '#92000E', // CLIQUED BUTTON
+		TOMATO_400: '#AB4D55', // HOVER BUTTON
 
-
-
-
-
-  }
+		DARK_200: '#00070A', // FOOD CARDS
+		DARK_400: '#000A0F',
+		DARK_600: '#00111A', // DARK BLUE CONTAINERS
+		DARK_700: '#001119', // DARK BLUE CONTAINERS
+		DARK_900: '#0D1D25', // INPUTS
+		DARK_1000: '#192227' // TAGS
+	}
 }
+
+const config = defineConfig({
+	theme: {
+		tokens: {
+			colors: {
+				light: {
+					300: theme.COLORS.LIGHT_300,
+					400: theme.COLORS.LIGHT_400,
+					500: theme.COLORS.LIGHT_500,
+					600: theme.COLORS.LIGHT_600,
+					700: theme.COLORS.LIGHT_700
+				},
+				cake: {
+					200: theme.COLORS.CAKE_200
+				},
+				tomato: {
+					100: theme.COLORS.TOMATO_100,
+					200: theme.COLORS.TOMATO_200,
+					400: theme.COLORS.TOMATO_400
+				},
+				dark: {
+					200: theme.COLORS.DARK_200,
+					400: theme.COLORS.DARK_400,
+					600: theme.COLORS.DARK_600,
+					700: theme.COLORS.DARK_700,
+					900: theme.COLORS.DARK_900,
+					1000: theme.COLORS.DARK_1000
+				}
+			}
+		}
+	}
+})
+
+const system = createSystem(config)
+
+export { system, theme }

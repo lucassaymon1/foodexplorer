@@ -80,6 +80,9 @@ export const Container = styled.div`
 		z-index: 1000;
 		width: fit-content;
 		height: fit-content;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
 
 		h2 {
 			color: ${({ theme }) => theme.COLORS.CAKE_200};
