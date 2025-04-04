@@ -3,6 +3,7 @@ import { Home } from "../Pages/Home";
 import { Details } from "../Pages/Details";
 import { New } from "../Pages/New";
 import { Edit } from "../Pages/Edit";
+import { Cart } from "../Pages/Cart";
 
 export function AppRoutes() {
   return (
@@ -11,6 +12,7 @@ export function AppRoutes() {
       <Route path="/details/:id" element={<Details />} />
       <Route path="/new" element={<New />} />
       <Route path="/edit/:id" element={<Edit />} />
+      <Route path="/cart" element={<Cart />} />
     </Routes>
   )
 }

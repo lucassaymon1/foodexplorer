@@ -1,4 +1,4 @@
 import axios from 'axios'
 export const api = axios.create({
-	baseURL: 'https://foodexplorer-api-ruvf.onrender.com'
+	baseURL: import.meta.env.VITE_BASE_URL
 })
