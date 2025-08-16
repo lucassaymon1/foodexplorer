@@ -1,4 +1,4 @@
-import { Provider } from "@/components/ui/provider"
+import { Provider } from "./Components/ui/provider.jsx"
 import GlobalStyle from "../styles/global.js"
 import {theme} from "../styles/theme.js"
 import { ThemeProvider } from 'styled-components'
