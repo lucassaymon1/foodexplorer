@@ -85,13 +85,8 @@ export function Home() {
                   sectionFoods && sectionFoods.map(sectionFood => (
                     <FoodCard
                       key={String(sectionFood.id)}
-                      description={sectionFood.description}
-                      title={sectionFood.name}
-                      price={sectionFood.price}
-                      photo={sectionFood.picture}
-                      foodId={sectionFood.id}
-                      />
-
+                      product={sectionFood}
+                    />
                   ))
                 }
               </Section>
@@ -99,8 +94,6 @@ export function Home() {
             )
           })
         }
-
-        
       </main>
 
       <Footer />

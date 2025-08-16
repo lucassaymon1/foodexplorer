@@ -124,26 +124,28 @@ export const Container = styled.header`
 				transform: rotate(-45deg);
 			}
 		}
-		> .popup-icon {
-			position: relative;
+		> .popup-icon-button {
+			> .popup-icon {
+				position: relative;
 
-			.popup {
-				display: flex;
-				align-items: center;
-				justify-content: center;
+				.popup {
+					display: flex;
+					align-items: center;
+					justify-content: center;
 
-				position: absolute;
-				top: -1rem;
-				right: -1rem;
+					position: absolute;
+					top: -1rem;
+					right: -1rem;
 
-				background-color: ${({ theme }) => theme.COLORS.TOMATO_100};
-				height: 2rem;
-				width: 2rem;
-				font-size: 1.4rem;
-				border-radius: 50%;
-			}
-			svg {
-				display: block;
+					background-color: ${({ theme }) => theme.COLORS.TOMATO_100};
+					height: 2rem;
+					width: 2rem;
+					font-size: 1.4rem;
+					border-radius: 50%;
+				}
+				svg {
+					display: block;
+				}
 			}
 		}
 
@@ -210,7 +212,7 @@ export const Container = styled.header`
 			display: none;
 		}
 
-		.popup-icon {
+		.popup-icon-button .popup-icon {
 			display: none;
 		}
 		.menu {

@@ -11,6 +11,7 @@ import { CaretLeft } from "../../icons/CaretLeft"
 
 import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
+import { useCart } from "../../hooks/cart"
 import { api } from "../../services"
 import { useAuth } from "../../hooks/auth"
 
@@ -22,6 +23,7 @@ export function Details() {
   const [price, setPrice] = useState("")
   
   const {user} = useAuth()
+  const {addToCart} = useCart()
   const isAdm = user.isAdmin
 
   const params = useParams()
@@ -33,8 +35,9 @@ export function Details() {
     minimumFractionDigits: 2
   })
 
-  function handleQuantifyChange(newQuantify){
-    setQuantify(newQuantify)
+  function handleIncludeToCart(addToCart, product){
+    addToCart(product, quantify)
+    navigate("/")
   }
 
   useEffect(() => {
@@ -89,8 +92,8 @@ export function Details() {
                     </div>
                     :
                     <div className="order-container">
-                      <Quantify className="quantify" onQuantifyChange={handleQuantifyChange}/>
-                      <Button onClick={() => navigate("/")} icon={Receipt} title={`Incluir · ${formatter.format(price)}`} />
+                      <Quantify className="quantify" value={quantify} onChange = {setQuantify}/>
+                      <Button onClick={() => handleIncludeToCart(addToCart, data)} icon={Receipt} title={`Incluir · ${formatter.format(price)}`} />
                     </div>
 
 
