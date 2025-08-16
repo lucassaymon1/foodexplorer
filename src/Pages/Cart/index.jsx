@@ -1,10 +1,9 @@
-import { useCart } from "@/hooks/cart";
+import { useCart } from "../../hooks/cart";
 import { CartProductItem } from "../../Components/CartProductItem";
-import { Header } from "@/components/Header";
-import { CaretLeft } from "@/icons/CaretLeft";
+import { Header } from "../../Components/Header";
+import { CaretLeft } from "../../icons/CaretLeft";
 import { useNavigate } from "react-router-dom";
 import { ButtonText } from "../../Components/ButtonText";
-import { PiCaretLeftBold } from "react-icons/pi";
 import {TextArea} from "../../Components/TextArea"
 import {Button as DefaultButton} from "../../Components/Button"
 import {Footer} from "../../Components/Footer"
