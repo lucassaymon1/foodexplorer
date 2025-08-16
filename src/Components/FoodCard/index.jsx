@@ -11,14 +11,17 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 import { useAuth } from "../../hooks/auth"
+import { useCart } from "../../hooks/cart"
 
-export function FoodCard({ description, title, price, photo, foodId, admin}) {
+export function FoodCard({product, admin}) {
 
   const [quantify, setQuantify] = useState(1)
 
   const {user} = useAuth()
+  const {addToCart} = useCart()
   const isAdm = user.isAdmin
   const navigate = useNavigate()
+  const { name: title, id: foodId, picture, description, price} = product
   const foodPrice = price * quantify
 
   var formatter = new Intl.NumberFormat("pt-BR", {
@@ -29,8 +32,9 @@ export function FoodCard({ description, title, price, photo, foodId, admin}) {
 
   const formattedPrice = formatter.format(foodPrice)
 
-  function handleQuantifyChange(newQuantity){
-    setQuantify(newQuantity)
+  function handleIncludeToCart(addToCart){
+    addToCart(product, quantify)
+    setQuantify(1)
   }
   
   return (
@@ -49,7 +53,7 @@ export function FoodCard({ description, title, price, photo, foodId, admin}) {
 
       }
       <button className="details-button" onClick={() => navigate(`/details/${foodId}`)}>
-        <img src={photo} alt="refeição" />
+        <img src={picture} alt="refeição" />
         <h3>{`${title} >`}</h3>
         <p className="description">{description}</p>
         <h2>{formattedPrice}</h2>
@@ -60,15 +64,12 @@ export function FoodCard({ description, title, price, photo, foodId, admin}) {
         isAdm ?
           null
           :
-
           <div className="quantify-container">
             <div className="quantify">
-              <Quantify onQuantifyChange={handleQuantifyChange} />
+              <Quantify value={quantify} onChange={setQuantify} />
             </div>
-            <Button title="incluir" />
-
+            <Button title="incluir" onClick={() => handleIncludeToCart(addToCart)}/>
           </div>
-
       }
 
     </Container>

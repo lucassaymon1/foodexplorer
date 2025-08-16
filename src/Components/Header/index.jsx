@@ -12,11 +12,13 @@ import { Button } from "../Button"
 import { ButtonText } from "../ButtonText"
 
 import { useAuth } from "../../hooks/auth"
+import { useCart } from "../../hooks/cart.jsx"
 
 import ExplorerIcon from "../../icons/ExplorerIcon.svg"
 
 export function Header({value, onChange}) {
   const {user, signOut} = useAuth()
+  const {cart} = useCart()
   const isAdm = user.isAdmin
 
   const [menuState, setMenuState] = useState(false)
@@ -89,7 +91,7 @@ export function Header({value, onChange}) {
             isAdm ?
               <Button onClick={() => navigate("/new")} className="desktop-button" title="Novo prato" />
               :
-              <Button className="desktop-button" title="Meus Pedidos (0)" icon={Receipt} />
+              <Button onClick={() => navigate("/cart")} className="desktop-button" title={`Meus Pedidos (${cart.totalProducts})`} icon={Receipt} />
 
           }
 
@@ -105,11 +107,12 @@ export function Header({value, onChange}) {
           isAdm ?
             null
             :
-            <div className="popup-icon">
-              <p className="popup">0</p>
-              <Receipt />
-
-            </div>
+            <button className="popup-icon-button" onClick={() => navigate("/cart")}>
+              <div className="popup-icon">
+                <p className="popup">{cart.totalProducts}</p>
+                <Receipt />
+              </div>
+            </button>
 
         }
 

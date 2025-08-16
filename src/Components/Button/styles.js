@@ -1,6 +1,11 @@
 import { styled } from 'styled-components'
 
 export const Container = styled.button`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.8rem;
+
 	transition: all ease 0.2s;
 
 	width: 100%;

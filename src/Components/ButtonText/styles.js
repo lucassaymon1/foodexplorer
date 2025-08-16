@@ -1,6 +1,9 @@
 import { styled } from 'styled-components'
 
 export const Container = styled.a`
+	font-size: 2rem;
+	font-weight: 500;
+
 	transition: all ease 0.3s;
 	width: max-content;
 

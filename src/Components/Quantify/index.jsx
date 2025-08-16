@@ -3,48 +3,42 @@ import { Minus } from "../../icons/Minus";
 import { Plus } from "../../icons/Plus";
 import { useState, useEffect } from "react";
 
-export function Quantify({ onQuantifyChange, ...rest }) {
+export function Quantify({ value = 1, onChange, ...rest }) {
 
-  const [quantify, setQuantify] = useState(1)
   const [isHigherThan, setIsHigherThan] = useState(false)
 
   useEffect(() => {
 
-    onQuantifyChange(quantify)
+    onChange(value)
 
-  }, [quantify, onQuantifyChange])
+  }, [value, onChange])
 
   function handleMinus(){
 
-    if(quantify <= 1){
-      return
-    }
-    else if(quantify <= 10){
-      setIsHigherThan(false)
-    }
+    if (value <= 1) return
+    if (value <= 10) setIsHigherThan(false)
 
-    setQuantify(prevState => prevState-1)
+    onChange(value - 1)
   }
 
   function handlePLus(){
-    setQuantify(prevState => prevState+1)
+    onChange(value + 1)
 
-    if(quantify >= 9){
+    if(value >= 9){
       setIsHigherThan(true)
     }
-
   }
 
   return (
     <Container {...rest}>
       {
-        quantify &&
+        value &&
         <>
           <button type="button" onClick={handleMinus}>
             <Minus />
 
           </button>
-          <h3>{ isHigherThan ? `${quantify}` : `0${quantify}`}</h3>
+          <h3>{ isHigherThan ? `${value}` : `0${value}`}</h3>
           <button type="button" onClick={handlePLus}>
             <Plus />
 

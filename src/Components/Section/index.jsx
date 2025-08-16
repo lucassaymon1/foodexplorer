@@ -1,5 +1,4 @@
 import { Container } from "./styles"
-import { ButtonText } from "../ButtonText"
 import { CaretLeft } from "../../icons/CaretLeft"
 import { CaretRight } from "../../icons/CaretRight"
 import { useState, useEffect, useLayoutEffect } from "react"

@@ -1,4 +1,4 @@
-import { createSystem, defineConfig } from '@chakra-ui/react'
+import { createSystem, defineConfig, defaultConfig } from '@chakra-ui/react'
 
 // Criando o tema para o Chakra UI sem modificar o original
 
@@ -21,7 +21,8 @@ const theme = {
 		DARK_600: '#00111A', // DARK BLUE CONTAINERS
 		DARK_700: '#001119', // DARK BLUE CONTAINERS
 		DARK_900: '#0D1D25', // INPUTS
-		DARK_1000: '#192227' // TAGS
+		DARK_1000: '#192227', // TAGS
+		DARK_1100: '#15242c' // Icon Button hover
 	}
 }
 
@@ -37,7 +38,7 @@ const config = defineConfig({
 					700: theme.COLORS.LIGHT_700
 				},
 				cake: {
-					200: theme.COLORS.CAKE_200
+					200: { value: theme.COLORS.CAKE_200 }
 				},
 				tomato: {
 					100: theme.COLORS.TOMATO_100,
@@ -50,13 +51,14 @@ const config = defineConfig({
 					600: theme.COLORS.DARK_600,
 					700: theme.COLORS.DARK_700,
 					900: theme.COLORS.DARK_900,
-					1000: theme.COLORS.DARK_1000
+					1000: theme.COLORS.DARK_1000,
+					1100: theme.COLORS.DARK_1100
 				}
 			}
 		}
 	}
 })
 
-const system = createSystem(config)
+const system = createSystem(defaultConfig, config)
 
 export { system, theme }
