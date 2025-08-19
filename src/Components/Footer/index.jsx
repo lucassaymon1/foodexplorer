@@ -15,7 +15,7 @@ export function Footer() {
         <h1>food explorer</h1>
 
       </div>
-      <p>© 2023 - Todos os direitos reservados.</p>
+      <p>© 2025 - Todos os direitos reservados.</p>
     </Container>
   )
 }

@@ -33,6 +33,9 @@ import { FaPix } from "react-icons/fa6";
 import { FaRegCreditCard } from "react-icons/fa";
 import { Receipt } from "../../icons/Receipt";
 import { LuTickets } from "react-icons/lu";
+import { FaHeart } from "react-icons/fa";
+import { MdDinnerDining } from "react-icons/md";
+import { MdRestaurantMenu } from "react-icons/md";
 
 import qrCode from "../../assets/qrcode.jpg"
 
@@ -40,6 +43,7 @@ import qrCode from "../../assets/qrcode.jpg"
 import { LuCreditCard } from "react-icons/lu"
 import { usePaymentInputs } from "react-payment-inputs"
 import cardImages from "react-payment-inputs/images"
+import { useEffect, useState } from "react";
 
 // get tools for credit card processing on input
 const images = cardImages
@@ -60,7 +64,17 @@ const CardImage = ({...props}) => {
 
 export function Cart() {
   const { cart, addToCart } = useCart();
+  const [isEmptyCart, setIsEmptyCart] = useState(true)
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if(cart.totalProducts === 0){
+      setIsEmptyCart(true)
+    }
+    else{
+      setIsEmptyCart(false)
+    }
+  }, [cart.totalProducts])
 
   const paymentMethods = [
     {
@@ -128,108 +142,148 @@ export function Cart() {
       <Header />
 
       {/* Botão de voltar */}
-      <Box pl={24} py={12} w="max-content">
+      <Box pl={{base: 12, md: 12, lg: 24}} py={12} w="max-content">
         <ButtonText onClick={() => navigate(-1)} icon={CaretLeft} title="voltar" />
       </Box>
 
       {/* Conteúdo principal */}
-      <Flex justifyContent={{md:"center", lg: "space-evenly"}} py={22} pb={36}>
+      <Flex minH={{base: "80vh", lg: "default"}} maxW={{base: "4xl", lg: "full"}} w="full" gap={{base: 16, lg: 0}} align={{lg: "start"}} flexDir={{base: "column", lg: "row"}} justifyContent={{lg: "space-evenly"}} py={22} px={{base: 12, lg: isEmptyCart ? 24 : 0}} pb={36} m="auto">
         {/* Lista de produtos */}
-        <VStack align="stretch" gap={2}>
+        <VStack w={isEmptyCart?{base: "full", lg: "60%"}: "default"} align={{base: "stretch"}} gap={2} >
           <Heading as="h2" fontSize="5xl" pb={12}>
             Meu pedido
           </Heading>
+          {
+            isEmptyCart ? 
+            (
+              <HStack flexDir={{base: "column", lg: "row"}} justify="center" gap={12} h="100%" pt={{base: 16, lg: 32}} align="center">
+                <Icon fontSize={{base: 124, md: 160}} color="light.700">
+                  <MdDinnerDining />
+                </Icon>
+                <VStack gap={8}>
+                  <Heading size={{base: "5xl", lg: "6xl"}} color="light.700">Oops... Parece que você ainda não tem nenhum pedido!</Heading>
+                  <HStack flexDir={{base: "column", md: "row"}} w="full" gap={5}>
+                    <Button w={{base: "full", md: "50%", lg: "fit-content"}} onClick={() => navigate("/")} rounded="lg" size="2xl" bg="tomato.200" color="white" fontSize="xl" _hover={{
+                      bg: "white",
+                      color: "tomato.200"
+                    }}>
+                      <Icon size="xl">
+                        <MdRestaurantMenu/>
+                      </Icon>
+                      Voltar ao cardápio
+                    </Button>
+                    <Button w={{base: "full", md: "50%", lg: "fit-content"}} variant="surface" rounded="lg" size="2xl" fontSize="xl">
+                      <FaHeart/>
+                      Ir aos favoritos
+                    </Button>
+                    
+                  </HStack>
 
-          <VStack gap={10} mb="3rem" >
-            {cart.products?.map((product) => (
-              <CartProductItem
-                key={String(product.id)}
-                product={product}
-                addToCart={addToCart}
-              />
-            ))}
+                </VStack>
+              </HStack>
+            )
+            :
+            (
+              <>
+                <VStack gap={6} mb="3rem" >
+                  {cart.products?.map((product) => (
+                    <CartProductItem
+                      key={String(product.id)}
+                      product={product}
+                      addToCart={addToCart}
+                    />
+                  ))}
+                </VStack>
+                <Box w={{base: "100%", lg:"3xl"}}>
+                  <Heading size="2xl" pb={3}>Observações</Heading>
+                  <TextArea
+                    placeholder="Ex: tirar cebola na salada."
+                    minH="120px"
+                  />
+                </Box>
+              </>
+            )
+          }
 
-          </VStack>
-
-          <Box w="3xl">
-            <Heading size="2xl" pb={3}>Observações</Heading>
-            <TextArea
-              placeholder="Ex: tirar cebola na salada."
-              minH="120px"
-            />
-          </Box>
         </VStack>
 
-        {/* Campo de observações */}
+        {/* Campo de Resumo da compra */}
+
+        {
+          !isEmptyCart
+          &&
+          (
+            <VStack w={{base: "none", lg: "3xl"}} align={{base: "right", lg:"left"}} gap={6}>
+              <Heading as="h2" fontSize="5xl" pb={8}>
+                Resumo do pedido
+              </Heading>
+              <VStack gap={4} mb={8}>
+                <HStack justify="space-between" w="100%">
+                  <Text textStyle="2xl" >{`Produtos (${cart.totalProducts})`}</Text>
+                  <Text textStyle="2xl" >R$ {(cart.totalPrice)}</Text>
+                </HStack>
+                <HStack justify="space-between" w="100%">
+                  <Text textStyle="2xl" >{`Taxa de entrega`}</Text>
+                  <Text textStyle="2xl" color="green.500">Grátis</Text>
+                </HStack>
+
+                <HStack justify="space-between" w="100%">
+                  <Text textStyle="2xl" color="cake.200">Cupom de desconto</Text>
+                  <InputGroup
+                    paddingInline={0}
+                    startElement={<LuTickets size={18}/>} startElementProps={{pl:4}}
+                    endElement={<Button h="full" size="lg" fontSize="xl" px={3} bg="tomato.200" roundedLeft={0} roundedRight="lg" mr={-4} color="light.500" _hover={{
+                      bg: "white",
+                      color: "tomato.200"
+                    }}>Aplicar</Button>}
+                    w="50%"
+                  >
+                    
+                    <Input paddingInlineStart="0" paddingInlineEnd="0" paddingLeft={14} pr="6.6rem" py={8} fontSize="1.4rem" rounded="lg" placeholder="Insira aqui seu cupom" _focus={{
+                      outline: "1px"
+                    }}/>
+
+                  </InputGroup>
+                  
+                </HStack>
+
+                <HStack justify="space-between" w="100%" mt={4}>
+                  <Text textStyle="3xl" fontWeight={500}>Total</Text>
+                  <Text textStyle="3xl" fontWeight={500}>R$ {(cart.totalPrice)}</Text>
+                </HStack>
+              </VStack>
+              <Tabs.Root defaultValue="Pix" variant="outline" >
+                <Tabs.List >
+                  {
+                    paymentMethods.map(item => (
+                      <Tabs.Trigger key={item.title} value={item.title} w="full" fontSize="3xl" justifyContent="center" py={10} roundedTop="xl" borderBottom= "none" _selected={{
+                        bg: "dark.200",
+                        borderColor:"light.600",
+                      }} >
+                        {item.icon}
+                        {item.title}
+                      </Tabs.Trigger >
+                    ))
+                  }              
+                </Tabs.List>
+                {
+                  paymentMethods.map(item => (
+                    <Tabs.Content value={item.title} width="full" pt="0">
+                      <Card.Root overflow="hidden" width="full" roundedTop="none" borderColor="light.600">      
+                        {
+                          item.title==="Pix" ?
+                          <CardBodyPix/>
+                          : <CardBodyCredit/>
+                        }
+                      </Card.Root>
+                    </Tabs.Content>
+                  ))
+                }    
+              </Tabs.Root>       
+            </VStack>
+          )
+        }
         
-        <VStack w="3xl" align="left" gap={6}>
-          <Heading as="h2" fontSize="5xl" pb={8}>
-            Resumo do pedido
-          </Heading>
-          <VStack gap={4} mb={8}>
-            <HStack justify="space-between" w="100%">
-              <Text textStyle="2xl" >{`Produtos (${cart.totalProducts})`}</Text>
-              <Text textStyle="2xl" >R$ {(cart.totalPrice)}</Text>
-            </HStack>
-            <HStack justify="space-between" w="100%">
-              <Text textStyle="2xl" >{`Taxa de entrega`}</Text>
-              <Text textStyle="2xl" color="green.500">Grátis</Text>
-            </HStack>
-
-            <HStack justify="space-between" w="100%">
-              <Text textStyle="2xl" color="cake.200">Cupom de desconto</Text>
-              <InputGroup
-                paddingInline={0}
-                startElement={<LuTickets size={18}/>} startElementProps={{pl:4}}
-                endElement={<Button h="full" size="lg" fontSize="xl" px={3} bg="tomato.200" roundedLeft={0} roundedRight="lg" mr={-4} color="light.500" _hover={{
-                  bg: "white",
-                  color: "tomato.200"
-                }}>Aplicar</Button>}
-                w="50%"
-              >
-                
-                <Input paddingInlineStart="0" paddingLeft={14} py={8} fontSize="1.4rem" rounded="lg" placeholder="Insira aqui seu cupom" _focus={{
-                  outline: "1px"
-                }}/>
-
-              </InputGroup>
-              
-            </HStack>
-
-            <HStack justify="space-between" w="100%" mt={4}>
-              <Text textStyle="3xl" fontWeight={500}>Total</Text>
-              <Text textStyle="3xl" fontWeight={500}>R$ {(cart.totalPrice)}</Text>
-            </HStack>
-          </VStack>
-          <Tabs.Root defaultValue="Pix" variant="outline" >
-            <Tabs.List >
-              {
-                paymentMethods.map(item => (
-                  <Tabs.Trigger key={item.title} value={item.title} w="full" fontSize="3xl" justifyContent="center" py={10} roundedTop="xl" borderBottom= "none" _selected={{
-                    bg: "dark.200",
-                    borderColor:"light.600",
-                  }} >
-                    {item.icon}
-                    {item.title}
-                  </Tabs.Trigger >
-                ))
-              }              
-            </Tabs.List>
-            {
-              paymentMethods.map(item => (
-                <Tabs.Content value={item.title} width="full" pt="0">
-                  <Card.Root overflow="hidden" width="full" roundedTop="none" borderColor="light.600">      
-                    {
-                      item.title==="Pix" ?
-                      <CardBodyPix/>
-                      : <CardBodyCredit/>
-                    }
-                  </Card.Root>
-                </Tabs.Content>
-              ))
-            }    
-          </Tabs.Root>       
-        </VStack>
       </Flex>
       <Footer/>
     </Box>
