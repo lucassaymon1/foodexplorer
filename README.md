@@ -19,7 +19,7 @@ Senha: `123456`
 
 Como usuário admin, você poderá visualizar todos os pratos disponíveis no catálogo, além de poder editar e excluir pratos já existentes, bem como criar e inserir pratos novos no catálogo.
 
-*Nota*: *as alterações feitas como usuário admin são temporárias e a aplicação retornará ao seu estado inicial, uma vez que o conteúdo da aplicação online é refletida com base neste repositório.*
+*Nota*: *as alterações feitas como usuário admin são temporárias, pois o servidor que hospeda a API reseta o banco de dados ao seu estado inicial.*
 
 ### Cliente
 
